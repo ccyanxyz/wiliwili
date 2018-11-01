@@ -1,6 +1,6 @@
-searchKeyword = require('./search');
+searchYoutube = require('./search');
 
-searchKeyword('eth', 10, (res) => {
-	console.log(res);
-});
-
+searchYoutube('eth', 10).then( res => {
+    console.log('results:');
+    console.log(res);
+})
