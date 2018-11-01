@@ -5,9 +5,13 @@ var opts = {
 	key: 'AIzaSyC1fyXMde2dH-5iHnnIVvIQTL-dL7MyDIk'
 }
 
-search('eth', opts, function(err, res) {
-	if(err) {
-		return console.log(err)
-	}
-	console.dir(res)
-})
+function searchKeyword(keyword) {
+    search(keyword, opts, function( err, res ) {
+        if(err){
+            console.log(err);
+            return JSON;
+        } else {
+            return res;
+        }
+    })
+}
