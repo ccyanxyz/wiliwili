@@ -1,1 +1,0 @@
-# user page: /user/<id>
