@@ -19,24 +19,26 @@ router.post('/', (req, res) => {
 
 	var query = { email: _user.email };
 
-	User.find(query, (err, user) => {
+	User.find(query, (err, users) => {
 		//res.send(user);
 		//return;
-		console.log('query:' + query);
-		console.log('user:' + user);
-
+		console.log('query:');
+		console.log(query);
+		console.log('user:');
+		console.log(user);
+		
 		if(err) {
 			console.log(err);
 			//res.send(err);
 			return;
 		}
-		if(!user){
+		if(users.length === 0){
 			return res.redirect('../register');
 		}
-
+		var user = users[0]
 		if(user.password === password) {
-			console.log(mail + ' login success');
-			req.session.user = user;
+			console.log(user.mail + ' login success');
+			//req.session.user = user;
 			return res.redirect('../');
 		} else {
 			return res.redirect('/login');

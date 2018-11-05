@@ -21,7 +21,9 @@ router.post('/', function (req, res) {
 			console.log(err);
 			return;
 		}
-		if (user) {
+		if (user.length != 0) {
+			console.log('user exist, redirect to login page:')
+			console.log(user);
 			return res.redirect('../login');
 		} else {
 			var user = new User(_user);
@@ -31,7 +33,7 @@ router.post('/', function (req, res) {
 					res.redirect('./');
 				}
 				console.log(user.email + ' register successful');
-				resd.redirect('../login');
+				res.redirect('../login');
 			})
 		}
 	})

@@ -4,9 +4,15 @@ var router = express.Router();
 var { User } = require('../models/db');
 
 router.get('/', (req, res) => {
-	User.find( function (allUsers) {
-		console.log(allUsers);
-		res.send(allUsers);
+	User.find( (err, allUsers) => {
+		if(err){
+			console.log('get all users failed:');
+			console.log(err);
+		} else {
+			console.log('all users:');
+			console.log(allUsers);
+			res.send(allUsers);
+		}
 	} )
 })
 
