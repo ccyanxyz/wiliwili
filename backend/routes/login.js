@@ -1,31 +1,47 @@
+var express = require('express');
+var { User } = require('../models/db');
 
+var router = express.Router();
 
+var bodyParser = require('body-parser');
 
-app.get('/login', (req, res) => {
-	res.render('login', { title: 'login' });
+router.use(bodyParser.urlencoded({ extended: false }));
+
+router.get('/', (req, res) => {
+	res.render('login');
 });
 
-app.post('/login', (req, res) => {
-	var _user = req.body.user;
-	var username = _user.username;
+router.post('/', (req, res) => {
+	var _user = req.body;
+	//res.send(req.body);
 	var password = _user.password;
 	var email = _user.email;
 
-	User.findUserByMail(email, (err, user) => {
+	var query = { email: _user.email };
+
+	User.find(query, (err, user) => {
+		//res.send(user);
+		//return;
+		console.log('query:' + query);
+		console.log('user:' + user);
+
 		if(err) {
 			console.log(err);
+			//res.send(err);
 			return;
 		}
 		if(!user){
-			return res.redirect('/register');
+			return res.redirect('../register');
 		}
 
 		if(user.password === password) {
 			console.log(mail + ' login success');
 			req.session.user = user;
-			return res.redirect('/');
+			return res.redirect('../');
 		} else {
 			return res.redirect('/login');
 		}
 	});
 });
+
+module.exports = router;

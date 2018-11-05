@@ -1,30 +1,40 @@
-var User = require('../models/user');
+var express = require('express');
+var { User } = require('../models/db');
 
-app.get('/register', (req, res) => {
-	res.render('register', { title: 'register' });
+var router = express.Router();
+
+var bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: false }));
+
+router.get('/', (req, res) => {
+	res.render('register');
 });
 
-app.post('/register', function (req, res) {
-	var _user = req.body.user;
+router.post('/', function (req, res) {
+	var _user = req.body;
+	//res.send(req.body);
 
-	User.findUserByMail(_user.email, (err, user) => {
+	var query = { email: _user.email };
+
+	User.find(query, (err, user) => {
 		if(err) {
 			console.log(err);
 			return;
 		}
-
 		if (user) {
-			return res.redirect('/login');
+			return res.redirect('../login');
 		} else {
 			var user = new User(_user);
 			user.save((err, user) => {
 				if(err) {
 					console.log(err);
-					res.redirect('/register');
+					res.redirect('./');
 				}
 				console.log(user.email + ' register successful');
-				resd.redirect('/login');
+				resd.redirect('../login');
 			})
 		}
 	})
 })
+
+module.exports = router;
