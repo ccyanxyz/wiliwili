@@ -1,5 +1,4 @@
 node_modules
 *.swp
-data/*
-db/*
-data/db/*
+data
+db
