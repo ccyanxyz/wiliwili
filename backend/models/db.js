@@ -7,17 +7,18 @@ var Schema = mongoose.Schema;
 var userModel = new Schema({
 	email: { type: String, unique: true },
 	username: String,
-	password: String
+	password: String,
+	points: Number
 });
 
 // video schema
 var videoModel = new Schema({
 	// video info
 	videoId: { type: String, unique: true },
-	videoLink: String,
-	title: String,
+	videoUrl: String, // local path of this video
+	title: String,	
 	description: String,
-	picUrl: String,
+	picUrl: String, // local path of video pic
 });
 
 // user-video schema

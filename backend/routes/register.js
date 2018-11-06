@@ -26,6 +26,8 @@ router.post('/', function (req, res) {
 			console.log(user);
 			return res.redirect('../login');
 		} else {
+			// register reward 100 points
+			_user.points = 100;
 			var user = new User(_user);
 			user.save((err, user) => {
 				if(err) {
