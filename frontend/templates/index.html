@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WiliWili</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="http://vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/5.19/video.min.js"></script>
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="text/javascript" src="../static/js/jquery-1.11.1.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <script src="../static/js/responsiveslides.min.js"></script>
+    <script>
+        $(function () {
+          $("#slider").responsiveSlides({
+            auto: true,
+            nav: true,
+            speed: 500,
+            namespace: "callbacks",
+            pager: true,
+          });
+        });
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="container_wrap">
+
+            {# header #}
+            <div class="col-sm-3 logo">
+                <a href="index.html">
+                    <img alt="" src="../static/images/logo.png" />
+                </a>
+            </div>
+            <div class="header_top">
+                <div class="col-sm-6 nav" >
+                    <ul>
+                      <li>
+                          <span class="simptip-position-bottom simptip-movable" data-tooltip="Home">
+                              <a href="index.html"></a>
+                          </span>
+                      </li>
+                     <li>
+                         <span class="simptip-position-bottom simptip-movable" data-tooltip="more">
+                             <a href="index.html"> </a>
+                         </span>
+                     </li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 header_right">
+                    <ul class="header_right_box">
+                        <li><p><a href="Login.html">Sign in</a> / <a href="Register.html">Sign up</a> </p></li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+                <div class="search">
+                    <form>
+                        <input type="text" value="Search..." onfocus="this.value='';" onblur="if(this.value==''){this.value='';}">
+                        <input type="submit" value="">
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            {# sliders #}
+            <div class="slider">
+                <div class="callback_container">
+                    <ul class="rslides" id="slider">
+                        <li>
+                            <img src="../static/images/banner8.jpg" class="img-responsive" alt="">
+                            <div class="button">
+                                <a href="Play.html" class="hvr-shutter-out-horizontal">Watch Now</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../static/images/banner7.jpg" class="img-responsive" alt="">
+                            <div class="button">
+                                <a href="Play.html" class="hvr-shutter-out-horizontal">Watch Now</a>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="../static/images/banner4.png" class="img-responsive" alt="">
+                            <div class="button">
+                                <a href="Play.html" class="hvr-shutter-out-horizontal">Watch Now</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            {# content #}
+            <div class="content">
+                <div class="col-md-5 grid_3">
+                    <div class="row_1">
+                        <div class="col-md-6 grid_4" id="video_list">
+
+                            {# submodule #}
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    {# footer #}
+    <div class="container">
+        <footer id="footer">
+            <div id="footer-3d">
+                <div class="gp-container">
+                    <span class="first-widget-bend"></span>
+                </div>
+            </div>
+            <div class="gp-footer-larger-first-col" id="footer-widgets">
+                <div class="gp-container">
+                    <div class="footer-widget footer-1">
+                        <div class="wpb_wrapper">
+                            <img src="../static/images/f_logo.png" alt="">
+                        </div>
+                        <br><p>writer something in footer</p>
+                        <p>xxxxxxxxxxxxxxxxxxxxxx</p>
+                    </div>
+                    <div class="footer_box">
+                        <div class="col_1_of_3 span_1_of_3">
+                            <h3>XXXXXXX</h3>
+                            <ul class="first">
+                                <li><a href="#">XXX</a></li>
+                                <li><a href="#">XXX</a></li>
+                            </ul>
+                        </div>
+                        <div class="col_1_of_3 span_1_of_3">
+                            <h3>About us</h3>
+                            <ul class="first">
+                                <li><a href="#">XXX</a></li>
+                                <li><a href="#">XXX</a></li>
+                            </ul>
+                            <div class="copy">
+                                <p>&copy;all right reserved</p>
+                            </div>
+                        </div>
+                        <div class="col_1_of_3 span_1_of_3">
+                            <h3>XXXXXXX</h3>
+                            <ul class="first">
+                                <li><a href="#">XXX</a></li>
+                                <li><a href="#">XXX</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script tpye="text/javascript" src="../static/js/ejs_production.js"></script>
+    <script tpye="text/javascript" src="../static/js/ejs_fulljslint.js"></script>
+    <script tpye="text/javascript">
+        var data='{"title":["title here","title here2"],"img_src":["../static/images/test.jpg","../static/images/test.jpg"]}';
+        var html=new EJS({url:'../static/js/video_list.ejs'}).render(JSON.parse(data));
+        alert(html);
+        document.getElementById("video_list").innerHTML=html;
+
+    </script>
+</body>
+</html>
