@@ -13,13 +13,18 @@ var userModel = new Schema({
 // video schema
 var videoModel = new Schema({
 	// video info
-	
+	videoId: { type: String, unique: true },
+	videoLink: String,
+	title: String,
+	description: String,
+	picUrl: String,
 });
 
 // user-video schema
 var uploadModel = new Schema({
 	// mapping from user to videos
-	
+	user: userModel,
+	videos: [ videoModel ]
 });
 
 var User = mongoose.model('User', userModel);
