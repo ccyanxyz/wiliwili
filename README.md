@@ -39,10 +39,126 @@
 	上传页：视频上传，可加上一句话描述
 
 ### 后端
-	Flask，处理GET/POST请求，返回前端需要的json格式数据
+	nodejs，处理GET/POST请求，返回前端需要的json格式数据
 	数据库：
 		个人信息表，个人发布的视频表，所有视频资源的表（id，视频路径等，描述）
 		常用的数据库查询操作封装好，返回json格式数据，方便调用
 	搜索：本地搜索，在所有资源列表里根据资源描述和搜索关键词进行匹配
 		youtube搜索，调用youtube提供的api
-	
+
+
+
+## 前端实现的一些问题
+
+​	现在所有代码都在src文件夹：
+
+```
+./
+├── README.md
+└── src
+    ├── app.js
+    ├── bin
+    ├── data
+    ├── models
+    ├── node_modules
+    ├── package.json
+    ├── public
+    ├── routes
+    ├── utils
+    └── views
+
+9 directories, 3 files
+```
+
+前端涉及到两个文件夹：public和views，其中public文件夹是css，js，images等资源文件，views是ejs模板文件（就是之前的HTML），文件名小写
+
+ejs模板文件注意：
+
+* 页面跳转：<a href='/'>是跳转到首页，<a href='/register'>是跳转到注册页，用相对路径，不要用href='xxx.html'
+
+* register和login页面：
+
+  ​	1.需要提交给后端处理的数据字段，form标签要注明 method="post"
+
+  ​	2.submit按钮和填写内容的框放在同一个form里面，这样点击submit后才能把这个form里面的所有数据post到后端
+
+  ​	3.input标签需要注明name属性，否则后端没办法根据名字获取input的值
+
+  ​	4.password字段type应该是"password"不是"text"
+
+  修改后的login表单部分：
+
+  ```html
+  <form method="post">
+      <div>
+          <span>Email Address<label>*</label></span>
+          <input type="text" name="email">
+      </div>
+      <div>
+          <span>Password<label>*</label></span>
+          <input type="password" name="password">
+      </div>
+      <input type="submit" value="Log in">
+  </form>
+  ```
+
+大部分问题我已经改过来了，注册登录和后端已经接起来了，前端还有一些需要修改的地方：
+
+​	1.public/css/style.css里面：
+
+```css
+background: url('../images/search.png')no-repeat  3px -2px;
+```
+
+​	images里面没有search.png
+
+​	2.login.ejs和register.ejs文件：
+
+​	把密码输入框的type改成password之后输入框样式变了：
+
+![1](/Users/apple/Desktop/junior/DAMCourse-2018/wiliwili/1.png)
+
+​	submit按钮和上面的输入框放到一个form里面之后样式也变了，需要调整一下
+
+
+
+修改后按照下面的步骤运行程序查看效果：
+
+1.把github上的master分支clone到本地：
+
+```shell
+git clone https://github.com/C790266922/wiliwili.git
+```
+
+2.进入clone下来的文件夹，安装nodejs模块（需要先安装好node和npm）：
+
+```shell
+npm install
+```
+
+3.运行：
+
+```shell
+npm start
+```
+
+4.浏览器 http://127.0.0.1:3000 查看效果
+
+
+
+新添加页面的话就把ejs模板文件放在views里面，css、图片、js放在public对应的文件夹里面，但是需要从浏览器去访问这个页面的话还需要添加路由
+
+具体步骤：
+
+1.在routes文件夹新建一个xxx.js文件，仿照routes里面其他js文件写好处理get请求post请求的函数
+
+2.在app.js里面添加：
+
+```js
+...
+var xxxRouter = require('./routes/xxx');
+...
+app.use('/xxx', xxxRouter);
+```
+
+3.npm start运行程序，浏览器访问http://127.0.0.1:3000/xxx 查看刚刚添加的页面
