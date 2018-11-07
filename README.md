@@ -136,13 +136,21 @@ git clone https://github.com/C790266922/wiliwili.git
 npm install
 ```
 
-3.运行：
+3.新建一个data文件夹用来存放数据库的数据
+
+4.运行mongodb：
+
+```shell
+mongod --dbpath ./data
+```
+
+5.运行：
 
 ```shell
 npm start
 ```
 
-4.浏览器 http://127.0.0.1:3000 查看效果
+6.浏览器 http://127.0.0.1:3000 查看效果
 
 
 
