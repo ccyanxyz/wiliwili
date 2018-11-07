@@ -74,7 +74,7 @@
 
 ejs模板文件注意：
 
-* 页面跳转：<a href='/'>是跳转到首页，<a href='/register'>是跳转到注册页，用相对路径，不要用href='xxx.html'
+* 页面跳转：href='/'是跳转到首页，href='/register'是跳转到注册页，用相对路径，不要用href='xxx.html'
 
 * register和login页面：
 
@@ -116,7 +116,7 @@ background: url('../images/search.png')no-repeat  3px -2px;
 
 ​	把密码输入框的type改成password之后输入框样式变了：
 
-![1](/Users/apple/Desktop/junior/DAMCourse-2018/wiliwili/1.png)
+![1](./1.png)
 
 ​	submit按钮和上面的输入框放到一个form里面之后样式也变了，需要调整一下
 
