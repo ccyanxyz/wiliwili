@@ -13,23 +13,22 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 	var _user = req.body;
-	//res.send(req.body);
 	var password = _user.password;
 	var email = _user.email;
+
+	console.log('post data:');
+	console.log(_user);
 
 	var query = { email: _user.email };
 
 	User.find(query, (err, users) => {
-		//res.send(user);
-		//return;
 		console.log('query:');
 		console.log(query);
-		console.log('user:');
-		console.log(user);
+		console.log('user found:');
+		console.log(users[0]);
 		
 		if(err) {
 			console.log(err);
-			//res.send(err);
 			return;
 		}
 		if(users.length === 0){

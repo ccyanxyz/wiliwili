@@ -1,24 +1,84 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-	<form action = "/register" method = "post">
-		<div>
-			username
-			<input type="text" name="username" id="username"/>
-		</div>
-		<div>
-			email
-			<input type="text" name="email" id="email"/>
-		</div>
-		<div>
-			password
-			<input type="password" name="password" id="password"/>
-		</div>
-		<button type="submit"> register </button>
-	</form>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WiliWili</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-  </body>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <script src="/js/responsiveslides.min.js"></script>
+    <script>
+        $(function () {
+          $("#slider").responsiveSlides({
+            auto: true,
+            nav: true,
+            speed: 500,
+            namespace: "callbacks",
+            pager: true,
+          });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="container_wrap">
+
+            <div class="header_top">
+                <a href="/">
+                <img src="/images/logo.png" alt="">
+                </a>
+            </div>
+
+            <div class="content">
+                <div class="Register">
+                    <form method="post">
+
+                        <div class="register-top-grid">
+                            <h2>Personal Information</h2>
+                            <div>
+                                <span>User Name<label>*</label></span>
+                                <input type="text" name="username">
+                            </div>
+                            <div>
+                                <span>Email Address<label>*</label></span>
+                                <input type="text" name="email">
+                            </div>
+                            <div class="clearfix"></div>
+                            <a class="news-letter" href="#"></a>
+                        </div>
+
+                        <div class="register-bottom-grid">
+                            <h2> Login Information</h2>
+                            <div>
+                                <span>Password<label>*</label></span>
+                                <input type="password" name="password">
+                            </div>
+                            <!--<div>-->
+                                <!--<span>Confirm Password<label>*</label></span>-->
+                                <!--<input type="text">-->
+                            <!--</div>-->
+                            <div class="clearfix"></div>
+                        </div>
+
+						<div class="clearfix"></div>
+						<div class="register-but">
+								<input type="submit" value="Submit">
+								<div class="clearfix"></div>
+							<div><p><br><br>Already have an account? <a href="login">Sign in</a> </p></div>
+						</div>
+
+                    </form>
+
+					</div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
 </html>
