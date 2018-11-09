@@ -28,12 +28,32 @@ var uploadModel = new Schema({
 	videos: [ videoModel ]
 });
 
+// reward
+var rewardModel = new Schema({
+	user: userModel,
+	id: Number, // primary key
+	title: String,
+	wili: Number,
+	desctiption: String
+});
+
+// user-rewards
+var postModel = new Schema({
+	// mapping from user to reward posts
+	user: userModel,
+	rewardPosts: [ rewardModel ]
+});
+
 var User = mongoose.model('User', userModel);
 var Video = mongoose.model('Video', videoModel);
 var Upload = mongoose.model('Upload', uploadModel);
+var Reward = mongoose.model('Reward', rewardModel);
+var Post = mongoose.model('Post', postModel);
 
 module.exports = {
 	User,
 	Video,
-	Upload
-}
+	Upload,
+	Reward,
+	Post
+};
