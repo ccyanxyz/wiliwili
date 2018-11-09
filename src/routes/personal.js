@@ -7,7 +7,11 @@ var router = express.Router();
 // personal center
 router.get('/', function(req, res, next) {
 	console.log(req.session);
-	
+	if(!req.session.user){
+		res.locals.message = 'Please login';
+		res.locals.error = {status:'not logged in', stack:'please login'};
+		res.render('error')
+	}	
 	var query = {email: req.session.user.email};
 	User.find(query, (err, users) => {
 		if(err){

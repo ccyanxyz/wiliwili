@@ -14,6 +14,7 @@ var registerRouter = require('./routes/register')
 var loginRouter = require('./routes/login')
 var playRouter = require('./routes/play')
 var personalRouter = require('./routes/personal')
+var rewardsRouter = require('./routes/rewards')
 
 var app = express();
 
@@ -39,6 +40,7 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/play', playRouter);
 app.use('/personal', personalRouter);
+app.use('/rewards', rewardsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -8,7 +8,12 @@
 	</head>
 	<body>
 		<p>Personal Center</p>
-		<h1>Balance:<%= user.points %></h1>
+
+		<h1>Personal infomation</h1>
+		<hr/>
+		<h3>username:<%= user.username %></h3>
+		<h3>email:<%= user.email %></h3>
+		<h3>WILI balance:<%= user.points %></h3>
 
 		<span>Amount</span>
 		<input type="text" name="amount" id="amount">
@@ -44,5 +49,14 @@
 			<input type="text" name="address"/>
 			<button type="submit">withdraw</button>
 		</form>
+
+
+		<h1>My reward post</h1>
+		<button>post</button>
+		<hr/>
+
+		<h1>My videos</h1>
+		<button>upload</button>
+		<hr/>
 	</body>
 </html>
