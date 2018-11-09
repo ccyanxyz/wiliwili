@@ -42,12 +42,26 @@
 			}
 			
 		</script>
-		<form action="/personal/withdraw" method="post">
+		<!--<form action="/personal/withdraw" method="post">-->
+		<form>
 			<span>Amount</span>
-			<input type="text" name="amount"/>
+			<input type="text" name="amount" id="amount"/>
 			<span>Address</span>
-			<input type="text" name="address"/>
-			<button type="submit">withdraw</button>
+			<input type="text" name="address" id="address"/>
+			<!--<button type="submit">withdraw</button>-->
+			<button onclick="withdraw()">withdraw</button>
+			<script>
+				function withdraw() {
+					var amount = document.getElementById('amount').value;
+					var address = document.getElementById('address').value;
+					var payload = {
+						amount: amount,
+						address: address
+					};
+					$.post('http://127.0.0.1:3000/personal/withdraw', payload);
+					location.reload();
+				}
+			</script>
 		</form>
 
 

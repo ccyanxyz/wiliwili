@@ -53,9 +53,13 @@
                 </div>
                 <div class="col-sm-3 header_right">
                     <ul class="header_right_box">
+						<% if(!user.username) { %>
 						<li><p><a href="login">Sign in</a> / <a href="register">Sign up</a> </p></li><br>
-						<li><p><a href="rewards">Reward List</a></p></li><br>
-						<li><p><a href="personal">Home</a></p></li>
+						<% } else { %>
+						<li><p><a href="personal"><%= user.username %></a></p></li>
+						<!--<li><p><a href="personal">Home</a></p></li>-->
+						<% } %>
+						<li><p><a href="rewards">&nbsp Reward List</a></p></li><br>
                         <div class="clearfix"></div>
                     </ul>
                 </div>
@@ -97,6 +101,21 @@
                 <div class="col-md-5 grid_3">
                     <div class="row_1">
                         <div class="col-md-6 grid_4" id="video_list">
+							<h2>Videos<h2>
+							<% for(var i = 0; i < videos.length; i++) {%>
+							<div class="grid_2 col_1">
+							<a href="play">
+							<img src="<%=videos[i].picUrl%>" class="img-responsive" alt=""/>
+							<div class="caption1">
+							<ul class="list_3">
+							<li><i class="icon5"></i></li>
+							</ul>
+							<i class="icon4"></i>
+								<p class="m_3"><%=videos[i].title%></p>
+							</div>
+							</a>
+							</div>
+							<%}%>
 
                         </div>
                     </div>
@@ -160,10 +179,10 @@
     <script type="text/javascript" src="/js/ejs_production.js"></script>
     <script type="text/javascript" src="/js/ejs_fulljslint.js"></script>
     <script type="text/javascript">
-        var data='{"title":["title here","title here2"],"img_src":["/images/test.jpg","/images/test.jpg"]}';
-        var html=new EJS({url:'/js/video_list.ejs'}).render(JSON.parse(data));
+        //var data='{"title":["title here","title here2"],"img_src":["/images/test.jpg","/images/test.jpg"]}';
+        //var html=new EJS({url:'/views/video_list.ejs'}).render(JSON.parse(data));
         //alert(html);
-        document.getElementById("video_list").innerHTML=html;
+        //document.getElementById("video_list").innerHTML=html;
 
     </script>
 </body>
