@@ -13,6 +13,7 @@ var userModel = new Schema({
 
 // video schema
 var videoModel = new Schema({
+	email: String,
 	// video info
 	videoId: { type: String, unique: true },
 	videoUrl: String, // local path of this video
@@ -24,14 +25,13 @@ var videoModel = new Schema({
 // user-video schema
 var uploadModel = new Schema({
 	// mapping from user to videos
-	user: userModel,
+	email: String,
 	videos: [ videoModel ]
 });
 
 // reward
 var rewardModel = new Schema({
-	user: userModel,
-	id: Number, // primary key
+	email: String,
 	title: String,
 	wili: Number,
 	desctiption: String
@@ -40,7 +40,7 @@ var rewardModel = new Schema({
 // user-rewards
 var postModel = new Schema({
 	// mapping from user to reward posts
-	user: userModel,
+	email: String,
 	rewardPosts: [ rewardModel ]
 });
 

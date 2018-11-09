@@ -10,7 +10,8 @@ router.get('/', function(req, res, next) {
 		var user = {};
 	}
 	
-	var videos = {};
+	// TODO: get all videos info from database and fill in template
+	var videos = [];
 
 	res.render('index', {user:user, videos:videos});
 });
