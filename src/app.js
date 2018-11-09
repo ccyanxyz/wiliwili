@@ -13,6 +13,7 @@ var usersRouter = require('./routes/users');
 var registerRouter = require('./routes/register')
 var loginRouter = require('./routes/login')
 var playRouter = require('./routes/play')
+var personalRouter = require('./routes/personal')
 
 var app = express();
 
@@ -25,6 +26,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+	secret: 'wiliwili'
+}));
 
 // database settings
 mongoose.connect('mongodb://localhost:27017/wiliwili')
@@ -34,6 +38,7 @@ app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/play', playRouter);
+app.use('/personal', personalRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
