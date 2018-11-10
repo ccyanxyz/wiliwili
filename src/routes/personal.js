@@ -25,7 +25,11 @@ router.get('/', function(req, res, next) {
 		}
 
 		var user = users[0];
-		res.render('personal', {user:user});
+		var videos = [];
+		var rewards = [];
+		// TODO: find user's video upload list and reward post list in database and fill above 2 arrays
+
+		res.render('personal', {user:user, videos: videos, rewards: rewards});
 	})
 });
 

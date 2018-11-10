@@ -6,12 +6,15 @@
 		<script src="/js/jquery-1.11.1.min.js"></script>
 	</head>
 	<body>
-		<p>悬赏</p>
-		<span>标题</span>
-		<input/>
-		<span>描述</span>
-		<input/>
-		<span>金额(WILI)</span>
-		<input/>
+		<form action="/post/post_reward" method="post">
+			<p>悬赏</p>
+			<span>标题</span>
+			<input name="title"/>
+			<span>描述</span>
+			<input name="description"/>
+			<span>金额(WILI)</span>
+			<input name="wili"/>
+			<button>发布</button>
+		</form>
 	</body>
 </html>
