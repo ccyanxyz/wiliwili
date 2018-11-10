@@ -1342,7 +1342,7 @@ p.cart {
 	
 	font-size:1em;
 }
-.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
+.register-top-grid input[type="text"], .register-bottom-grid input[type="password"] {
 	border: 1px solid #EEE;
 	outline-color: #6103d2;
 	width: 96%;
@@ -1417,10 +1417,11 @@ p.cart {
 .news-letter:hover {
 	color:#00BFF0;
 }
+
 .register-but{
 	
 }
-.register-but form input[type="submit"] {
+.register-but input[type="submit"] {
 	background: #6103d2;
 color: #FFF;
 font-size: 1em;
