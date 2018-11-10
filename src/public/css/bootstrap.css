@@ -732,6 +732,35 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
+
+.container2{
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container2 {
+    width: 450px;
+  }
+}
+@media (min-width: 992px) {
+  .container2 {
+    width: 450px;
+  }
+}
+@media (min-width: 1200px) {
+  .container2 {
+    width: 450px;
+  }
+}
+.container2-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @media (min-width: 768px) {
   .container {
     width: 750px;
@@ -5588,6 +5617,10 @@ button.close {
 .container:after,
 .container-fluid:before,
 .container-fluid:after,
+.container2:before,
+.container2:after,
+.container2-fluid:before,
+.container2-fluid:after,
 .row:before,
 .row:after,
 .form-horizontal .form-group:before,
@@ -5616,6 +5649,8 @@ button.close {
 .clearfix:after,
 .container:after,
 .container-fluid:after,
+.container2:after,
+.container2-fluid:after,
 .row:after,
 .form-horizontal .form-group:after,
 .btn-toolbar:after,
