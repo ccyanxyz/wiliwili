@@ -33,7 +33,7 @@ border-top-right-radius: 3px;
 -o-border-top-right-radius: 3px;
 }
 .logo{
-	margin-top: 30px;
+	margin-top: 11px;
 }
 /*---social-icons-----*/
 .nav {
@@ -555,7 +555,7 @@ border-bottom: 1px solid #6103d2;
 background: none;
 position: absolute;
 left:1120px;
-top:102px;
+top:85px;
 margin-bottom: 2em;
 float:right;
 }
@@ -799,7 +799,12 @@ width:19.8%;
 .col_1_of_3{
 display: block;
 float: left;
-margin:4% 0 1% 1.6%;
+margin:2% 0 1% 1.6%;
+}
+.col_1_of_3_2{
+display: block;
+float: left;
+margin:3.3% 0 1% 1.6%;
 }
 .span_1_of_3 h3 {
 margin-bottom:15px;
@@ -1864,8 +1869,52 @@ h2.m_3 {
 	height: 500px;
 }
 .video2{
-	background: #f9fbff;
 	margin-top: 30px;
 	margin-left: 15px;
 	float:left;
+}
+
+.play_button{
+	margin-top: 1cm;
+	text-align: center;
+}
+.praise{
+	background: #6103d2;
+	color: #FFF;
+	font-size: 1em;
+	padding: 7px 20px;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border: none;
+	outline: none;
+	margin-right: 0.2cm;
+	margin-left: 0.2cm;
+
+}
+.praise:hover {
+	background: #30354e;
+}
+
+.reward{
+	background: #6103d2;
+	color: #FFF;
+	font-size: 1em;
+	padding: 7px 20px;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border: none;
+	outline: none;
+	margin-right: 0.2cm;
+	margin-left: 0.2cm;
+}
+.reward:hover {
+	background: #30354e;
 }
