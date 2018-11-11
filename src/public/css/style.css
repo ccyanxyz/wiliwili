@@ -17,6 +17,9 @@ body a{
 .container_wrap{
 	padding:4em 0;
 }
+.container_wrap2{
+	padding:10em 0;
+}
 .header_top{
 	background: #fff;
 padding:2em 1em 1.3em;
@@ -30,7 +33,7 @@ border-top-right-radius: 3px;
 -o-border-top-right-radius: 3px;
 }
 .logo{
-	margin-top: 15px;
+	margin-top: 30px;
 }
 /*---social-icons-----*/
 .nav {
@@ -552,7 +555,7 @@ border-bottom: 1px solid #6103d2;
 background: none;
 position: absolute;
 left:1120px;
-top:85px;
+top:102px;
 margin-bottom: 2em;
 float:right;
 }
@@ -1277,7 +1280,15 @@ text-transform: uppercase;
 	display: block;
 	
 }
-.login-right input[type="text"] {
+.login-right input[type="text"]{
+	border: 1px solid #E4E4E4;
+	outline-color: #6103d2;
+	width: 96%;
+	font-size:0.8125em;
+	padding:10px;
+	-webkit-appearance: none;
+}
+.login-right input[type="password"]{
 	border: 1px solid #E4E4E4;
 	outline-color: #6103d2;
 	width: 96%;
@@ -1319,6 +1330,9 @@ p.cart {
 	line-height: 1.8em;
 }
 /*--register--*/
+.register-bottom-grid,.register-top-grid{
+
+}
 .register-top-grid h3, .register-bottom-grid h3 {
 	color:#000;
 	font-size:1.5em;
@@ -1327,22 +1341,19 @@ p.cart {
 	
 }
 .register-top-grid div, .register-bottom-grid div {
-	width: 48%;
+	width: 104%;
 	margin: 10px 0;
 }
 .register-bottom-grid div{
-	width: 48%;
-	float: left;
+	width: 104%;
 	margin: 10px 0;
 }
 .register-top-grid span, .register-bottom-grid span {
 	color:#999;
-	
 	display: block;
-	
 	font-size:1em;
 }
-.register-top-grid input[type="text"], .register-bottom-grid input[type="text"] {
+.register-top-grid input[type="text"], .register-bottom-grid input[type="password"] {
 	border: 1px solid #EEE;
 	outline-color: #6103d2;
 	width: 96%;
@@ -1417,10 +1428,12 @@ p.cart {
 .news-letter:hover {
 	color:#00BFF0;
 }
+
 .register-but{
-	
+
+	text-align:center;
 }
-.register-but form input[type="submit"] {
+.register-but input[type="submit"] {
 	background: #6103d2;
 color: #FFF;
 font-size: 1em;

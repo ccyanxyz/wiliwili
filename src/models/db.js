@@ -34,7 +34,7 @@ var rewardModel = new Schema({
 	email: String,
 	title: String,
 	wili: Number,
-	desctiption: String
+	description: String
 });
 
 // user-rewards
