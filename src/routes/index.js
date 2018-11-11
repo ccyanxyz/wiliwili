@@ -1,4 +1,5 @@
 var express = require('express');
+var {Video} = require('../models/db.js');
 var router = express.Router();
 
 /* GET home page. */
@@ -11,9 +12,15 @@ router.get('/', function(req, res, next) {
 	}
 	
 	// TODO: get all videos info from database and fill in template
-	var videos = [];
-
-	res.render('index', {user:user, videos:videos});
+	Video.find({}, (err,ret) => {
+		if(err){
+			console.log("index.js: Error " + err);
+			return;
+		}
+		var videos = ret;
+		console.log(videos);
+		res.render('index', {user:user, videos:videos});
+	});
 });
 
 module.exports = router;
