@@ -76,8 +76,13 @@
                     <video id="my-player" class="video-js vjs-big-play-centered" controls preload="auto" width="1050" height="500"  data-setup='{}'>
                         <source src="/images/incredible2.mp4">
                     </video>
-					<button>赞</button>
-					<button>打赏</button>
+                    <form action = "play/praise" method="post">
+					   <button type="submit">赞</button>
+                    </form>
+                    <form action = "play/pay" method="post">
+					   <button type="submit">打赏</button>
+                    </form>
+                    <!-- <input> -->
                 </div>
                 <div class="clearfix"></div>
             </div>

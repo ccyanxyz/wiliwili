@@ -6,10 +6,13 @@
 		<script src="/js/jquery-1.11.1.min.js"></script>
 	</head>
 	<body>
-		<p>Reward List</p>
-
 		<h1>Reward List</h1>
 		<hr/>
-		
+		<ul>
+			<h1>hhh</h1>
+			<% rewards.forEach(function(reward){%>
+			<li><%=reward.title %></li>
+			<% })%>
+		</ul>
 	</body>
 </html>
