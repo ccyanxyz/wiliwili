@@ -140,10 +140,10 @@ border-top-right-radius: 3px;
 	transform: translateY(10px);
 }
 /*------------end social simptip----------------*/
-.nav li:nth-child(1) a{
+.nav li:nth-child(2) a{
 	background: url(../images/img_sprite.png) -7px -9px;
 }
-.nav li:nth-child(2) a{
+.nav li:nth-child(1) a{
 	background: url(../images/img_sprite.png) -49px -8px;
 }
 .nav li:nth-child(3) a{
