@@ -1,0 +1,31 @@
+.content table{
+    width: 100%;
+}
+.content tr{
+    border-bottom:1px solid silver ;
+}
+.content th{
+    width: 2%;
+}
+.content td{
+    width:98%;
+    font-size: 150%;
+    line-height: 200%;
+
+}
+.RLli{
+    background-color: #40176b;
+}
+.RL-Title{
+    font-size: 160%;
+    font-weight: bold;
+
+}
+.RL-Person{
+    font-size: 80%;
+    color: silver;
+    line-height: 50%;
+}
+.RL-money{
+    color: #6723b2;
+}

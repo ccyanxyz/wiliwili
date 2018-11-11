@@ -1,0 +1,115 @@
+.reward-content{
+    align-items: center;
+    margin: 1%;
+    background-color: #dbdde7;
+    float: right;
+    width: 100%;
+    border-radius: 2px;
+}
+.reward-title{
+    color: #9d95ab;
+    font-size: 200%;
+}
+.reward-title input[type="text"]{
+    width: 100%;
+    background-color: rgba(229, 229, 229, 0);
+    border: none;
+}
+.reward-info{
+    color: #9d95ab;
+}
+
+.reward-info textarea{
+    width: 100%;
+    background-color: rgba(229, 229, 229, 0);
+    border: none;
+}
+
+.money-title{
+    margin: 1% 5%;
+    font-size: 120%;
+    color: #40176b;
+    float: left;
+    clear: left;
+    width: 100%;
+}
+.money{
+    color: #9d95ab;
+}
+.money input[type="text"]{
+    width: 100%;
+    background-color: rgba(229, 229, 229, 0);
+    border: none;
+    font-size: 120%;
+}
+
+.reward-button{
+
+}
+.reward-button button{
+    color: #40176b;
+    border:1px solid #9d95ab;
+    border-radius: 4px;
+    background-color: #cfc5dd;
+    width: 20%;
+    font-size: 150%;
+    transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+}
+
+.reward-button button:hover{
+    color: whitesmoke;
+    background-color: #40176b;
+    border-color: #40176b;
+}
+.reward-table{
+    width: 100%;
+}
+.reward-table th{
+    width: 20%;
+}
+.reward-table td{
+    width: 80%;
+}
+
+.pic{
+    max-width: 30%;
+}
+.Up-upload {
+    margin: 3% 35% 3% 0%;
+    width: 10%;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    text-align: center;
+}
+
+.Up-upload  input {
+    float: left;
+    position: absolute;
+    font-size: 100%;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.Up-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
+.upload-video{
+    max-width: 50%;
+}
