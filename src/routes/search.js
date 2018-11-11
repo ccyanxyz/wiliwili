@@ -10,10 +10,12 @@ let bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 
 // search local
-router.post('/search', (req, res) => {
+router.post('/', (req, res) => {
 	let keyword = req.body.keyword;
 	// ignore case, use re.test(string)
 	let re = new RegExp(keyword, 'i');
+	var user = req.session.user;
+	console.log(user);
 
 	// results: a list of video object
 	let results = [];
@@ -29,7 +31,7 @@ router.post('/search', (req, res) => {
 				results.push(ret[i])
 			}
 		}
-		res.render('index', {videos: results});
+		res.render('index', {user:user, videos: results});
 	})
 
 });
@@ -44,4 +46,4 @@ router.post('/youtube', (req, res) => {
 	// search youtube
 });
 
-
+module.exports = router;
