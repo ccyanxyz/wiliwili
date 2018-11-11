@@ -34,10 +34,37 @@ router.post('/post_reward', (req, res) => {
 		console.log(re);
 
 		// TODO: insert a new record to user's post list
-		Post.find({email:user_email}, (err, ret) => {
-
+		Post.find({email:user_email}, {_id: 0}, (err, ret) => {
+			if(err){
+				console.log("post.js: Error: " + error);
+			}
+			else if(ret.length > 1){
+				console.log("post.js: Error: duplicated keys");
+				console.log(ret);
+			}
+			else if(ret.length == 0){
+				console.log("post.js: not found");
+				Post.create({
+					email: user_email,
+					rewardPosts:reward 
+				},function(err){
+					if(err)  
+						console.log("post.js: Error: " + error);
+					else
+						console.log("post.js: insert OK");
+				});
+			}
+			else{
+				console.log(ret);
+				ret[0]["rewardPosts"].push(reward);
+				Post.update({email:user_email},ret[0],function(err){
+					if(err)
+						console.log("post.js: Error: " + error);
+					else
+						console.log("post.js: insert OK");
+				});
+			}
 		});
-
 		res.redirect('../../personal');
 	});
 });

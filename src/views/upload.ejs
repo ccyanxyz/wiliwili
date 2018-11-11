@@ -6,15 +6,17 @@
 		<script src="/js/jquery-1.11.1.min.js"></script>
 	</head>
 	<body>
-		<form action="/upload/upload_video" method="post">
+		<form action="/upload/upload_video" method="post" enctype="multipart/form-data" id="upform">
 			<p>上传视频</p>
-			<span>视频标题</span>
-			<input/>
-			<span>视频描述</span>
-			<input/>
-			<button>选择封面图</button>
-			<button>选择视频</button>
-			<button>上传</button>
+			<input type="text" name="title" placeholder="标题">
+			<br/>
+			选择图片<input type="file" name="thumbnail">
+			<br/>
+			选择视频<input type="file" name="video" >
+			<br/>
+			<input type="submit" value="上传视频">
+			<br/>
+			<textarea name="description" form="upform" placeholder="请输入视频描述"></textarea>
 		</form>
 	</body>
 </html>
