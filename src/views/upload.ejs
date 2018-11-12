@@ -6,103 +6,17 @@
 		<script src="/js/jquery-1.11.1.min.js"></script>
 	</head>
 	<body>
-		<form action="/upload/upl<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Offer a Reward</title>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
-     <link href="/css/OfferAReward.css" rel='stylesheet' type='text/css' />
-    <link href="/css/personal.css" rel='stylesheet' type='text/css' />
-
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-    <script src="/js/responsiveslides.min.js"></script>
-    <script>
-        $(function () {
-          $("#slider").responsiveSlides({
-            auto: true,
-            nav: true,
-            speed: 500,
-            namespace: "callbacks",
-            pager: true,
-          });
-        });
-    </script>
-</head>
-<body>
-<div class="container">
-        <div class="container_wrap">
-            <div class="col-sm-3 logo">
-                <a href="index.html">
-                    <img alt="" src="/images/logo.png" />
-                </a>
-            </div>
-            <div class="header_top">
-		 	<div class="clearfix"></div>
-            </div>
-            <br/>
-
-
-            <div class="content">
-                <div class="personal-Title"> 发布悬赏</div>
-                <img src="/images/Line.png" class="personal-line"/>
-                <table class="reward-table">
-                    <tr>
-                        <th>
-                            <div class="money-title">主题</div>
-                        </th>
-                        <td>
-                            <div class="reward-content">
-                                <div class="reward-title">
-                                    <input type="text" placeholder="请输入悬赏主题"/>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th><div class="money-title">正文</div></th>
-                        <td>
-                            <div class="reward-content">
-                                <div class="reward-info">
-                                    <textarea rows="9" name="reward-information"cols="30"placeholder="请在此输入正文"></textarea>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th> <div class="money-title">悬赏金额（wili)</div></th>
-                        <td>
-                            <div class="reward-content">
-                                <div class="money">
-                                    <input type="text" placeholder="悬赏金额越高，越容易找到资源哦~"/>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-
-                <div class="reward-button" align="center">
-                    <button onclick="">发布</button>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-</div>
-</body>
-</html>ad_video" method="post">
+		<form action="/upload/upload_video" method="post" enctype="multipart/form-data" id="upform">
 			<p>上传视频</p>
-			<span>视频标题</span>
-			<input/>
-			<span>视频描述</span>
-			<input/>
-			<button>选择封面图</button>
-			<button>选择视频</button>
-			<button>上传</button>
+			<input type="text" name="title" placeholder="标题">
+			<br/>
+			选择图片<input type="file" name="thumbnail">
+			<br/>
+			选择视频<input type="file" name="video" >
+			<br/>
+			<input type="submit" value="上传视频">
+			<br/>
+			<textarea name="description" form="upform" placeholder="请输入视频描述"></textarea>
 		</form>
 	</body>
 </html>
