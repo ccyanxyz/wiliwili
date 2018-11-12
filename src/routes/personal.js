@@ -11,14 +11,15 @@ router.get('/', function(req, res, next) {
 		res.locals.message = 'Please login';
 		res.locals.error = {status:'not logged in', stack:'please login'};
 		res.render('error')
-	}	
+	}
+
 	var query = {email: req.session.user.email};
 	User.find(query, (err, users) => {
+		console.log("User.first");
 		if(err){
 			console.log(err);
 			return;
 		}
-
 		if(users.length == 0){
 			console.log('find 0 users with email: ' + req.session.user.email);
 			return;
@@ -34,24 +35,21 @@ router.get('/', function(req, res, next) {
 				console.log("personal.js: Error " + err);
 				return;
 			}
-			
-			if(post_ret.length != 0){
+			if(post_ret.length != 0)
 				rewards = post_ret[0]["rewardPosts"];
-			
-				console.log("rewards");
-				console.log(rewards);			
-				Upload.find({email: user["email"]}, (err, upload_ret) => {
-					if(err){
-						console.log("personal.js: Error " + err);
-						return;
-					}
-					if(upload_ret.length != 0)
-						videos = upload_ret[0]["videos"];
-					console.log("videos");
-					console.log(videos);
-					res.render('personal', {user:user, rewards: rewards, videos: videos});
-				});
-			}
+			console.log("rewards");
+			console.log(rewards);			
+			Upload.find({email: user["email"]}, (err, upload_ret) => {
+				if(err){
+					console.log("personal.js: Error " + err);
+					return;
+				}
+				if(upload_ret.length != 0)
+					videos = upload_ret[0]["videos"];
+				console.log("videos");
+				console.log(videos);
+				res.render('personal', {user:user, rewards: rewards, videos: videos});
+			});
 		});
 	});
 });

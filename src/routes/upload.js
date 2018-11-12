@@ -14,18 +14,17 @@ router.use(bodyParser.urlencoded({ extended: false }));
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
     	if (file.fieldname == 'thumbnail')
-    		uploadFolder = './upload/thumbnail';
+    		uploadFolder = './public/upload/thumbnail';
     	else if( file.fieldname == 'video')
-    		uploadFolder = './upload/video';
+    		uploadFolder = './public/upload/video';
         cb(null, uploadFolder);    // 保存的路径，备注：需要自己创建
     },
     filename: function (req, file, cb) {
     	var name = file.originalname;
     	var ext = name.substr(name.lastIndexOf('.'));
-    	var main = name.substr(0, name.lastIndexOf('.'));
-    	main += ( '-' + String(Date.now()) );
-    	var res = main + ext; 
-        cb(null, res);  
+    	var main = String(Date.now());
+    	name = main + ext; 
+        cb(null, name);  
     }
 });
 
@@ -64,13 +63,14 @@ router.post('/upload_video', (req, res) => {
 
 	    var user = req.session.user;
 	    var query = {email: user.email};
+	    // console.log(video.path.replace('public\\', ""));
 	    var _video = {
 	    	email: user.email,
 			videoId: Date.now(),
-			videoUrl: video.path, // local path of this video
+			videoUrl: video.path.replace('public\\', ""), // local path of this video
 			title: body.title,	
 			description: body.description,
-			picUrl: thumbnail.path, // local path of video pic
+			picUrl: thumbnail.path.replace('public\\', ""), // local path of video pic
 	    };
 	    Video.create(_video, function(err){
 	    	if (err) {
@@ -121,7 +121,7 @@ router.post('/upload_video', (req, res) => {
 	    	// body: body
 	    };
 	    // res.end(JSON.stringify( response ));
-
+	    res.redirect("../../personal");
 	});
 
 });
