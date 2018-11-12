@@ -2,30 +2,52 @@
     width: 100%;
 }
 .content tr{
-    border-bottom:1px solid silver ;
 }
 .content th{
-    width: 2%;
+    width: 5%;
 }
 .content td{
-    width:98%;
+    width:95%;
     font-size: 150%;
     line-height: 200%;
 
 }
+.content td:hover{
+    background-color: #e3d7e6;
+}
+.card{
+    font-size: 130%;
+    background-color: rgba(64, 23, 107, 0.15);
+}
+.card:hover{
+    background-color: #9d95ab;
+}
+
 .RLli{
-    background-color: #40176b;
+    background-color: #741dac;
 }
 .RL-Title{
-    font-size: 160%;
+    color: #40176b;
+    font-size: 140%;
     font-weight: bold;
-
+    margin: 1% 0% 0% 0%;
+    padding: 2% 3% 1% 3%;
 }
 .RL-Person{
-    font-size: 80%;
-    color: silver;
+    font-size: 60%;
+    color: #8876c0;
     line-height: 50%;
+    padding: 0% 3% 1% 3%;
 }
 .RL-money{
+    font-size: 80%;
     color: #6723b2;
+    text-align: right;
+    padding: 1% 2%;
+}
+.RL-content{
+    color: #573c88;
+    font-weight: lighter;
+    font-size: 80%;
+    padding: 0% 3%;
 }

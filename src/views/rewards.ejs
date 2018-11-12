@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reward List</title>
+    <title>Wanted</title>
      <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link href="..//css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -41,30 +41,24 @@
             <div class="content">
                 <div class="personal-Title">Reward List</div>
                 <img src="..//images/Line.png" class="personal-line"/>
-                <table>
-                <% rewards.forEach(function(reward){%>
-                    <tr>
-                        <div class="RL-Title"><%=reward.title%></div>
-                        <div class="RL-Person">发帖人：<%=reward.email%></div>
-                        <div class="RL-content">content: <%=reward.description%></div>
-                        <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
-                        <input> </input>
-                    </tr>
+                 <% rewards.forEach(function(reward){%>
+                <div class="card">
+
+                    <div class="RL-Title"><%=reward.title%></div>
+                    <div class="RL-Person">发帖人：<%=reward.email%></div>
+                    <div class="RL-content"> <%=reward.description%></div>
+                    <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
+
+                </div>
                 <%})%>
-                </table>
+
+
                 <div class="clearfix"></div>
             </div>
         </div>
 </div>
 <script tpye="text/javascript" src="..//js/ejs_production.js"></script>
-<script tpye="text/javascript" src="..//js/ejs_fulljslint.js"></script>
-<script>
-    function addWili(){
-        var url = ""
-        var request = new XMLHttpRequest();
-        request.open("POST", url);
-        request.send("F");
-    }
+    <script tpye="text/javascript" src="..//js/ejs_fulljslint.js"></script>
 
 </body>
 </html>
