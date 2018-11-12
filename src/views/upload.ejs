@@ -5,15 +5,15 @@
     <title>Upload</title>
      <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link href="../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-     <link href="../static/css/OfferAReward.css" rel='stylesheet' type='text/css' />
-    <link href="../static/css/personal.css" rel='stylesheet' type='text/css' />
+    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+     <link href="/css/OfferAReward.css" rel='stylesheet' type='text/css' />
+    <link href="/css/personal.css" rel='stylesheet' type='text/css' />
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script type="text/javascript" src="../static/js/jquery-1.11.1.min.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
-    <script src="../static/js/responsiveslides.min.js"></script>
+    <script src="/js/responsiveslides.min.js"></script>
     <script>
         $(function () {
           $("#slider").responsiveSlides({
@@ -30,8 +30,8 @@
 <div class="container">
         <div class="container_wrap">
             <div class="col-sm-3 logo">
-                <a href="index.html">
-                    <img alt="" src="../static/images/logo.png" />
+                <a href="/">
+                    <img alt="" src="/images/logo.png" />
                 </a>
             </div>
             <div class="header_top">
@@ -39,12 +39,12 @@
                     <ul>
                       <li>
                           <span class="simptip-position-bottom simptip-movable" data-tooltip="Home">
-                              <a href="index.html"></a>
+                              <a href="/"></a>
                           </span>
                       </li>
                      <li>
                          <span class="simptip-position-bottom simptip-movable" data-tooltip="more">
-                             <a href="index.html"> </a>
+                             <a href="/"> </a>
                          </span>
                      </li>
                     </ul>
@@ -57,49 +57,47 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
-            <br/>
-
 
             <div class="content">
-                <div class="personal-Title"> 上传视频</div>
-                <img src="../static/images/Line.png" class="personal-line"/>
+                <div class="personal-Title"> Upload Video</div>
+                <img src="/images/Line.png" class="personal-line"/>
                 <table class="reward-table">
                     <tr>
                         <th>
-                            <div class="money-title">视频标题</div>
+                            <div class="money-title">Title</div>
                         </th>
                         <td>
                             <div class="reward-content">
                                 <div class="reward-title">
-                                    <input type="text" placeholder="请输入视频标题"/>
+                                    <input type="text" placeholder="Please enter the video title here..."/>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <th><div class="money-title">视频描述</div></th>
+                        <th valign ="top"><div class="money-title">Description</div></th>
                         <td>
                             <div class="reward-content">
                                 <div class="reward-info">
-                                    <textarea rows="9" name="reward-information"cols="30"placeholder="请在此输入正文"></textarea>
+                                    <textarea rows="9" name="reward-information"cols="30"placeholder="Please enter the description here..."></textarea>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <th><div class="money-title">封面图片</div></th>
-                        <td>
+                        <th valign ="top"><div class="money-title">Cover Image</div></th>
+                        <td valign ="top">
                             <div class="Up-upload">
-                                 <input type="file" id="chooseImage" name="file" accept="image/*" />选择图片
+                                 <input type="file" id="chooseImage" name="file" accept="image/*" />Choose Image
                             </div>
                             <img id="cropedBigImg" value='custom'  data-address=''class="pic" />
                         </td>
                     </tr>
                     <tr>
-                        <th><div class="money-title">上传视频</div></th>
+                        <th valign ="top"><div class="money-title">Upload Video</div></th>
                         <td>
                             <div class="Up-upload">
-                                <input type="file" id="chooseVideo" name="video" accept="video/*"/>选择视频
+                                <input type="file" id="chooseVideo" name="video" accept="video/*"/>Choose video
                             </div>
                             <video id="cropedVideo"class="upload-video" ></video>
                         </td>
@@ -108,7 +106,7 @@
                 </table>
 
                 <div class="reward-button" align="center">
-                    <button onclick="">上传</button>
+                    <button onclick="">UPLOAD</button>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -117,9 +115,9 @@
 <script type="text/javascript">
 
 　 　 $('#chooseImage').on('change',function(){
-    	var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
-    		fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
-    		src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+        var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
+            fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+            src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
 
         $('#cropedBigImg').attr('src',src);
 });
