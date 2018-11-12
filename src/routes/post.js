@@ -65,6 +65,7 @@ router.post('/post_reward', (req, res) => {
 				});
 			}
 		});
+		console.log(reward);
 		res.redirect('../../personal');
 	});
 });
