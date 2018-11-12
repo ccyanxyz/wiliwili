@@ -11,15 +11,16 @@ router.get('/', function(req, res, next) {
 		res.locals.message = 'Please login';
 		res.locals.error = {status:'not logged in', stack:'please login'};
 		res.render('error')
-	}	
+	}
+
 	var query = {email: req.session.user.email};
 	User.find(query, (err, users) => {
+		console.log("User.first");
 		if(err){
 			console.log(err);
 			res.message = "error finding user";
 			res.render('error', {error:err});
 		}
-
 		if(users.length == 0){
 			console.log('find 0 users with email: ' + req.session.user.email);
 			res.message = "user not found";
@@ -37,9 +38,9 @@ router.get('/', function(req, res, next) {
 				console.log("personal.js: Error " + err);
 				return;
 			}
-			
-			if(post_ret.length != 0){
+			if(post_ret.length != 0)
 				rewards = post_ret[0]["rewardPosts"];
+<<<<<<< HEAD
 			
 				console.log("rewards");
 				console.log(rewards);			
@@ -58,6 +59,21 @@ router.get('/', function(req, res, next) {
 				res.render('personal', {user:user, rewards: rewards, videos: videos});
 				return;
 			}
+=======
+			console.log("rewards");
+			console.log(rewards);			
+			Upload.find({email: user["email"]}, (err, upload_ret) => {
+				if(err){
+					console.log("personal.js: Error " + err);
+					return;
+				}
+				if(upload_ret.length != 0)
+					videos = upload_ret[0]["videos"];
+				console.log("videos");
+				console.log(videos);
+				res.render('personal', {user:user, rewards: rewards, videos: videos});
+			});
+>>>>>>> b46c34473de8e323bbd769e742d19b2ba84cd038
 		});
 	});
 });
