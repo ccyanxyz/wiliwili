@@ -42,27 +42,31 @@ router.post('/post_reward', (req, res) => {
 				console.log("post.js: Error: duplicated keys");
 				console.log(ret);
 			}
-			else if(ret.length == 0){
-				console.log("post.js: not found");
-				Post.create({
-					email: user_email,
-					rewardPosts:reward 
-				},function(err){
-					if(err)  
-						console.log("post.js: Error: " + error);
-					else
-						console.log("post.js: insert OK");
-				});
-			}
 			else{
-				console.log(ret);
-				ret[0]["rewardPosts"].push(reward);
-				Post.update({email:user_email},ret[0],function(err){
+				User.update({email:user_email}, {$inc:{points:-wili}}, (err, ret) => {
 					if(err)
-						console.log("post.js: Error: " + error);
-					else
-						console.log("post.js: insert OK");
+						console.log("post.js: Error " + err);
 				});
+				if(ret.length == 0){
+					console.log("post.js: not found");
+					Post.create({email: user_email, rewardPosts:reward}, function(err){
+						if(err)  
+							console.log("post.js: Error: " + error);
+						else{
+							console.log("post.js: insert OK");
+						}
+					});
+				}
+				else{
+					console.log(ret);
+					ret[0]["rewardPosts"].push(reward);
+					Post.update({email:user_email},ret[0],function(err){
+						if(err)
+							console.log("post.js: Error: " + error);
+						else
+							console.log("post.js: insert OK");
+					});
+				}
 			}
 		});
 		console.log(reward);
