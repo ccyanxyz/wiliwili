@@ -7,6 +7,16 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
+function compare(x, y) {
+	if(x.wili < y.wili){
+		return 1;
+	} else if(x.wili > y.wili) {
+		return -1;
+	} else {
+		return 0;
+	}
+}
+
 router.get('/', (req, res) => {
 	// TODO: find all reward posts in database and fill in the ejs template
 	Post.find({},{rewardPosts:1,_id:0}).exec((err, ret) => {
@@ -26,11 +36,29 @@ router.get('/', (req, res) => {
 					console.log(data[j]);
 				}
 			}
+
+			rewards.sort(compare);
 			res.render('rewards', {rewards: rewards});
 		}
 
 	})
 	
 });
+
+// router.get('/addWili', (req, res) => {
+// 	if(!req.session.user){
+// 		res.locals.message = 'Please login';
+// 		res.locals.error = {status:'not logged in', stack:'please login'};
+// 		res.render('error')
+// 	}
+
+// 	User.find({email:req.session.user.email}, (err, users) => {
+// 		if(err){
+// 			console.
+// 		}
+
+
+// 	}
+
 
 module.exports = router;

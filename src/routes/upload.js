@@ -57,6 +57,12 @@ router.post('/upload_video', (req, res) => {
 	    // }
 	    var body = req.body;
 		var files = req.files;
+		console.log(files);
+		if(typeof files.thumbnail == 'undefined'){
+			console.log('shit');
+			res.redirect('./');
+			return;
+		}
 		var thumbnail = files['thumbnail'][0];
 		var video = files['video'][0];
 	    console.log(thumbnail.originalname);
@@ -68,12 +74,14 @@ router.post('/upload_video', (req, res) => {
 	    var _video = {
 	    	email: user.email,
 			videoId: Date.now(),
-			videoUrl: video.path.replace('public\\', ""), // local path of this video
+			videoUrl: video.path.replace('public/', ""), // local path of this video
 			title: body.title,	
 			description: body.description,
-			picUrl: thumbnail.path.replace('public\\', ""), // local path of video pic
-	    	upVote: 0
+			//picUrl: thumbnail.path, // local path of video pic
+			picUrl: thumbnail.path.replace('public/', ""), // local path of video pic
+			upVote: 0
 	    };
+
 	    Video.create(_video, function(err){
 	    	if (err) {
 	    		console.log(err);

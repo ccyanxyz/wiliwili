@@ -8,6 +8,7 @@
     <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
      <link href="/css/personal.css" rel='stylesheet' type='text/css' />
+    <link href="/css/RewardList.css" rel='stylesheet' type='text/css' />
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
@@ -128,31 +129,24 @@
                 <div class="clearfix"></div>
             </div>
             <div class="content">
-                <div class="personal-Title"> My Reward Post</div>
+                <div class="personal-Title"> My Posts</div>
                 <a href="javascript:;" class="a-upload">
                     <button onclick="{location.href='/post'}">Post</button>
                 </a>
                 <img src="/images/Line.png" class="personal-line"/>
-                <div class="col-md-5 grid_3">
-                    <div class="row_1">
-                        <div class="col-md-6 grid_4">
-                            <table>
-                            <% rewards.forEach(function(reward){%>
-                                <tr>
-                                    <div class="RL-Title">Title</div>
-                                    <div class="RL-Person">发帖人：<%=reward.email%></div>
-                                    <div class="RL-content">content: <%=reward.description%></div>
-                                    <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
-                                </tr>
-                            <%})%>
-                            </table>
-                        </div>
+                <div class="content">
+                    <% rewards.forEach(function(reward){%>
+                    <div class="card">
+                        <div class="RL-Title"><%=reward.title%></div>
+                        <div class="RL-content"><%=reward.description%></div>
+                        <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
                     </div>
+                    <%})%>
                 </div>
                 <div class="clearfix"></div>
             </div>
             <div class="content">
-                <div class="personal-Title"> Movie Storehouse</div>
+                <div class="personal-Title">My Videos</div>
                <a href="javascript:;" class="a-upload">
                    <button onclick="{location.href='/upload'}">Upload</button>
                </a>
@@ -161,9 +155,21 @@
                 <div class="col-md-5 grid_3">
                     <div class="row_1">
                         <div class="col-md-6 grid_4" id="video_list2">
-
-                            {# submodule #}
-
+                         <% for(var i = 0; i < videos.length; i++) {%>
+                         <div class="grid_2 col_1">
+                         <a href="play">
+                         <img src="<%=videos[i].picUrl%>" class="img-responsive" alt=""/>
+                         <div class="caption1">
+                         <ul class="list_3">
+                         <li><i class="icon5">
+						 </i></li>
+                         </ul>
+                         <i class="icon4"></i>
+                         <p class="m_3"><%= videos[i].title %></p>
+                         </div>
+                         </a>
+                         </div>
+                         <%}%>
 
                         </div>
                     </div>
@@ -177,7 +183,7 @@
 
 
 
-<script tpye="text/javascript" src="/js/ejs_production.js"></script>
+<script type="text/javascript" src="/js/ejs_production.js"></script>
     <script tpye="text/javascript" src="/js/ejs_fulljslint.js"></script>
     <script tpye="text/javascript">
         var data='{"title":["title here","title here2"],"img_src":["/images/test.jpg","/images/test.jpg"]}';

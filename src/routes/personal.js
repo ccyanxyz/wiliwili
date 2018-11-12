@@ -1,6 +1,6 @@
 var express = require('express');
 var { User, Upload, Post} = require('../models/db.js');
-// var transfer = require('../utils/token_transfer.js');
+var transfer = require('../utils/token_transfer.js');
 
 var router = express.Router();
 
@@ -18,11 +18,14 @@ router.get('/', function(req, res, next) {
 		console.log("User.first");
 		if(err){
 			console.log(err);
-			return;
+			res.message = "error finding user";
+			res.render('error', {error:err});
 		}
 		if(users.length == 0){
 			console.log('find 0 users with email: ' + req.session.user.email);
-			return;
+			res.message = "user not found";
+			var error = {status: 'user not found', stack: 'user not found'};
+			res.render('error', {error: error});
 		}
 
 		var user = users[0];

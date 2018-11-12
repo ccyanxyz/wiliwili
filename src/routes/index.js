@@ -2,6 +2,16 @@ var express = require('express');
 var {Video} = require('../models/db.js');
 var router = express.Router();
 
+function compare(x, y) {
+	if(x.upVote < y.upVote){
+		return 1;
+	} else if(x.upVote > y.upVote) {
+		return -1;
+	} else {
+		return 0;
+	}
+}
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	console.log(req.session);
@@ -19,6 +29,9 @@ router.get('/', function(req, res, next) {
 		}
 		var videos = ret;
 		console.log(videos);
+
+		videos.sort(compare);
+
 		res.render('index', {user:user, videos:videos});
 	});
 });

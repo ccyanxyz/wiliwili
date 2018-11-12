@@ -1,0 +1,139 @@
+.reward-content{
+    align-items: center;
+    margin: 1%;
+    background-color: #e3e5ef;
+    float: right;
+    width: 100%;
+    border-radius: 2px;
+}
+.reward-title{
+    color: #9d95ab;
+    font-size: 150%;
+}
+.reward-title input[type="text"]{
+    color: #9d95ab;
+    font-size: 150%;
+    width: 100%;
+    height:40px;
+    background-color: rgba(229, 229, 229, 0);
+    border: none;
+}
+.reward-info{
+    color: #9d95ab;
+    font-size: 120%;
+}
+
+.reward-info textarea{
+    width: 100%;
+    background-color: rgba(229, 229, 229, 0);
+    border: none;
+}
+
+.money-title{
+    margin-top:7.07px;
+    margin-right:5%;
+    font-size: 150%;
+    color: #40176b;
+    float: left;
+    clear: left;
+    width: 100%;
+}
+.money{
+    color: #9d95ab;
+}
+.money input[type="text"]{
+    width: 100%;
+    height: 40px;
+    background-color: rgba(229, 229, 229, 0);
+    border: none;
+    font-size: 120%;
+}
+
+.reward-button{
+
+}
+.reward-button button{
+    color: #f9fbff;
+    border:1px solid #6103d2;
+    border-radius: 4px;
+    background-color: #6103d2;
+    width: 20%;
+    font-size: 150%;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    margin-top: 0.5cm;
+}
+
+.reward-button button:hover{
+    color: whitesmoke;
+    background-color: #40176b;
+    border-color: #40176b;
+}
+.reward-table{
+    width: 100%;
+}
+.reward-table th{
+    width: 20%;
+}
+.reward-table td{
+    width: 80%;
+}
+
+.pic{
+    max-width: 30%;
+}
+
+
+.Up-upload {
+    margin: 1% 10% 3% 0%;
+    width: 15%;
+    height:200%;
+    position: relative;
+    cursor: pointer;
+    color: #888;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    text-align: center;
+    vertical-align: top;
+}
+
+.Up-upload  input {
+    position: absolute;
+    font-size: 100%;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.Up-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #ccc;
+    text-decoration: none
+}
+.upload-video{
+    margin-top: 1%;
+    max-width: 50%;
+}
+.upload-img{
+    margin-top: 1%;
+    max-width: 50%;
+}
+
+input::-webkit-input-placeholder {
+    color: #bfbecd;
+    font-size: 12px;
+    }
+textarea::-webkit-input-placeholder {
+    color: #bfbecd;
+    font-size: 12px;
+}

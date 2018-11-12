@@ -3,5 +3,3 @@ cd D:\Xinli\Univ\JuniorS1\Digital_Assets_Management\wiliwili\src
 
 cnpm start
 
-net start mongodb
-
