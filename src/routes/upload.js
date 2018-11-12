@@ -102,6 +102,7 @@ router.post('/upload_video', (req, res) => {
 			            console.log("Res:" + res);
 			        }
 	    		});
+	    		req.session.message = '上传成功！';
 	    	}
 
 	    });
@@ -119,7 +120,8 @@ router.post('/upload_video', (req, res) => {
 	    	}
 	    	// body: body
 	    };
-	    res.end(JSON.stringify( response ));
+	    // res.end(JSON.stringify( response ));
+
 	});
 
 });
