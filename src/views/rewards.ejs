@@ -1,18 +1,72 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Reawrd list</title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
-		<script src="/js/jquery-1.11.1.min.js"></script>
-	</head>
-	<body>
-		<h1>Reward List</h1>
-		<hr/>
-		<ul>
-			<h1>hhh</h1>
-			<% rewards.forEach(function(reward){%>
-			<li><%=reward.title %></li>
-			<% })%>
-		</ul>
-	</body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reward List</title>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="..//css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="..//css/style.css" rel="stylesheet" type="text/css" media="all" />
+     <link href="..//css/personal.css" rel='stylesheet' type='text/css' />
+    <link href="..//css/RewardList.css" rel='stylesheet' type='text/css' />
+
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="text/javascript" src="..//js/jquery-1.11.1.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:100,200,300,400,500,600,700,800,900' rel='stylesheet' type='text/css'>
+    <script src="..//js/responsiveslides.min.js"></script>
+    <script>
+        $(function () {
+          $("#slider").responsiveSlides({
+            auto: true,
+            nav: true,
+            speed: 500,
+            namespace: "callbacks",
+            pager: true,
+          });
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+        <div class="container_wrap">
+            <div class="col-sm-3 logo">
+                <a href="/">
+                    <img alt="" src="..//images/logo.png" />
+                </a>
+            </div>
+            <div class="header_top">
+    
+			<div class="clearfix"></div>
+            </div>
+            <div class="content">
+                <div class="personal-Title">Reward List</div>
+                <img src="..//images/Line.png" class="personal-line"/>
+                <table>
+                    <tr>
+                        <th bgcolor="#4b0082"></th>
+                        <td>
+                            <div class="RL-Title">Title</div>
+                            <div class="RL-Person">发帖人：</div>
+                            <div class="RL-content">content</div>
+                            <div class="RL-money">悬赏金额：85 wili</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th bgcolor="#4b0082"></th>
+                        <td>
+                            <div class="RL-Title">Title2</div>
+                            <div class="RL-Person">发帖人:</div>
+                            <div class="RL-content">content2</div>
+                            <div class="RL-money">悬赏金额：55 wili</div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+</div>
+<script tpye="text/javascript" src="..//js/ejs_production.js"></script>
+    <script tpye="text/javascript" src="..//js/ejs_fulljslint.js"></script>
+
+</body>
 </html>

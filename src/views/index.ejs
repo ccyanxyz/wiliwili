@@ -45,8 +45,8 @@
                           </span>
                       </li>
                      <li>
-                         <span class="simptip-position-bottom simptip-movable" data-tooltip="more">
-                             <a href="/"> </a>
+                         <span class="simptip-position-bottom simptip-movable" data-tooltip="Reward lists">
+                             <a href="/rewards"> </a>
                          </span>
                      </li>
                     </ul>
@@ -64,8 +64,8 @@
                     </ul>
                 </div>
                 <div class="search">
-                    <form>
-                        <input type="text" value="Search..." onfocus="this.value='';" onblur="if(this.value==''){this.value='';}">
+                    <form action="/search" method="post">
+                        <input type="text" name="keyword" value="Search..." onfocus="this.value='';" onblur="if(this.value==''){this.value='';}">
                         <input type="submit" value="">
                     </form>
                 </div>
@@ -148,32 +148,31 @@
                         <div class="wpb_wrapper">
                             <img src="/images/f_logo.png" alt="">
                         </div>
-                        <br><p>writer something in footer</p>
-                        <p>xxxxxxxxxxxxxxxxxxxxxx</p>
+                        <div class="copy">
+                            <p>&copy;all right reserved</p>
+                        </div>
                     </div>
                     <div class="footer_box">
                         <div class="col_1_of_3 span_1_of_3">
-                            <h3>XXXXXXX</h3>
+                            <h3>Categories</h3>
                             <ul class="first">
-                                <li><a href="#">XXX</a></li>
-                                <li><a href="#">XXX</a></li>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="/rewards">Rewards</a></li>
                             </ul>
                         </div>
                         <div class="col_1_of_3 span_1_of_3">
                             <h3>About us</h3>
                             <ul class="first">
-                                <li><a href="#">XXX</a></li>
-                                <li><a href="#">XXX</a></li>
+                                <li><a href="#">Yan Chen</a></li>
+                                <li><a href="#">Xinli Hou</a></li>
                             </ul>
-                            <div class="copy">
-                                <p>&copy;all right reserved</p>
-                            </div>
                         </div>
-                        <div class="col_1_of_3 span_1_of_3">
-                            <h3>XXXXXXX</h3>
+                        <div class="col_1_of_3_2 span_1_of_3">
                             <ul class="first">
-                                <li><a href="#">XXX</a></li>
-                                <li><a href="#">XXX</a></li>
+                                <li></li>
+                                <li><a href="#">Yun Yang</a></li>
+                                <li><a href="#">Shanchen Zou</a></li>
+                                <li><a href="#">Yuanqing Zhang</a></li>
                             </ul>
                         </div>
                         <div class="clearfix"></div>

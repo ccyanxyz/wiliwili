@@ -17,6 +17,7 @@ var personalRouter = require('./routes/personal')
 var rewardsRouter = require('./routes/rewards')
 var uploadRouter = require('./routes/upload')
 var postRouter = require('./routes/post')
+var searchRouter = require('./routes/search')
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use('/personal', personalRouter);
 app.use('/rewards', rewardsRouter);
 app.use('/upload', uploadRouter);
 app.use('/post', postRouter);
+app.use('/search', searchRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

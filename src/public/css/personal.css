@@ -1,0 +1,153 @@
+.icon{
+    float: left;
+    width: 30%;
+
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+
+
+}
+.personal{
+    margin:10px 5px;
+
+}
+.message{
+    float: right;
+    font-size: 120%;
+    width: 70%;
+    color: #58198d;
+    line-height: 200%;
+
+}
+.info{
+    color: #58198d;
+    float: left;
+    width: 30%;
+    font-weight: bold;
+}
+.info-detail{
+    float: right;
+    width: 70%;
+}
+.nav-button{
+    width: 100%;
+    text-align: center;
+    line-height: 200%;
+    font-size: 110%;
+    align-content: end;
+}
+.nav-button input[type="text"]{
+    border: 1px solid #E4E4E4;
+	outline-color: #6103d2;
+    float: left;
+	width: 50%;
+	font-size:0.8125em;
+	padding:6px 10px;
+	-webkit-appearance: none;
+}
+.nav-button ul,li{
+    margin: 0px;
+    padding: 0px;
+}
+.nav-button button{
+    background: #6103d2;
+	color: #FFF;
+    clear: left;
+	font-size:1em;
+	padding:7px 7px;
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border:none;
+	outline:none;
+}
+.nav-button button:hover{
+    background:#000;
+}
+.personal-button{
+    margin: 0% 5% 0% 2%;
+    border-radius: 3px;
+    list-style: none;
+    border: 1px solid #cfc5dd;
+    transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+}
+.personal-button:hover{
+    color: whitesmoke;
+    background-color: #37115b;
+     opacity:0.6 ;
+    filter:opacity(60);
+    -moz-opacity: 0.6;
+
+}
+.personal-line{
+    max-width: 100%;
+}
+.personal-Title{
+    float: left;
+    font-size: 200%;
+    font-weight: bolder;
+    color: #40176b;
+}
+.personal-Button-beside-title{
+    float: right;
+    width: 10%;
+    font-size: 130%;
+    color: #6723b2;
+
+}
+.personal-Button-beside-title:hover{
+    background-color: #0f0f34;
+    color: white;
+}
+.a-upload {
+    float: right;
+    padding: 1% 2%;
+    height: 5%;
+    line-height: 20px;
+    position: relative;
+    margin-right: 2%;
+    cursor: pointer;
+    color: #9d95ab;
+    background: #fafafa;
+    border: 1px solid #cfc5dd;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.a-upload  button {
+    background: rgba(255, 255, 255, 0);
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	display: inline-block;
+	text-transform: uppercase;
+	border:none;
+	outline:none;
+    position: relative;
+    font-size: 100%;
+    cursor: pointer
+}
+
+.a-upload:hover {
+    color: #e9e6f0;
+    background: #58198d;
+    border-color: #58198d;
+    text-decoration: none
+}
+.personal-form1{
+    float: right;
+    width: 70%;
+}
+

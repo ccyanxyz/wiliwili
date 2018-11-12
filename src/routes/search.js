@@ -1,5 +1,5 @@
 let { Video } = require('../models/db');
-let searchYoutube = require('../utils/search');
+// let searchYoutube = require('../utils/search');
 
 let express = require('express');
 
@@ -10,15 +10,29 @@ let bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 
 // search local
-router.post('/local', (req, res) => {
+router.post('/', (req, res) => {
 	let keyword = req.body.keyword;
 	// ignore case, use re.test(string)
 	let re = new RegExp(keyword, 'i');
+	var user = req.session.user;
+	console.log(user);
 
 	// results: a list of video object
 	let results = [];
+	
+	Video.find((err, ret) => {
+		if(err){
+			console.log(err);
+			return;
+		}
 
-	// search local video database
+		for(var i = 0; i < ret.length; i++){
+			if(re.test(ret[i].title || re.test(ret[i].description))){
+				results.push(ret[i])
+			}
+		}
+		res.render('index', {user:user, videos: results});
+	})
 
 });
 
@@ -32,4 +46,4 @@ router.post('/youtube', (req, res) => {
 	// search youtube
 });
 
-
+module.exports = router;

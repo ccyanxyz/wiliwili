@@ -87,8 +87,9 @@ router.post('/withdraw', (req, res) => {
 				return;
 			}
 			user.points = newPoints;
-			res.render('personal', {user:user});
+			//res.render('personal', {user:user});
 			transfer(address, Number(amount));		
+			res.redirect('./');
 		});
 	})
 });
@@ -113,13 +114,14 @@ router.post('/topup', (req, res) => {
 		var newPoints = user.points + amount;
 
 		var updates = {$set: {points:newPoints}}
-		User.updateOne(query, updates, err => {
+		User.updateOne(query, updates, (err, user) => {
 			if(err){
 				console.log(err);
 				return;
 			}
 			user.points = newPoints;
-			res.render('personal', {user:user});
+			//res.render('personal', {user:user});
+			res.redirect('./');
 		});
 	})
 });

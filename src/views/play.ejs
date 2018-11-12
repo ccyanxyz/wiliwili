@@ -38,51 +38,18 @@
                 </a>
             </div>
             <div class="header_top">
-                <div class="col-sm-6 nav" >
-                    <ul>
-                      <li>
-                          <span class="simptip-position-bottom simptip-movable" data-tooltip="Home">
-                              <a href="/"></a>
-                          </span>
-                      </li>
-                     <li>
-                         <span class="simptip-position-bottom simptip-movable" data-tooltip="more">
-                             <a href="/"> </a>
-                         </span>
-                     </li>
-                    </ul>
-                </div>
-                <div class="col-sm-3 header_right">
-                    <ul class="header_right_box">
-                        <li><p><a href="/login">Sign in</a> / <a href="/register">Sign up</a> </p></li>
-                        <div class="clearfix"></div>
-                    </ul>
-                </div>
-                <div class="search">
-                    <form>
-                        <input type="text" value="Search..." onfocus="this.value='';" onblur="if(this.value==''){this.value='';}">
-                        <input type="submit" value="">
-                    </form>
-                </div>
-                <div class="clearfix"></div>
+			<div class="clearfix"></div>
             </div>
 
             <div class="content">
-                <!-- {# 这里是youtube链接 #}-->
-                <!--<div class="video1">-->
-                    <!--<iframe width="100%" height="100%" src="https://www.youtube.com/embed/s1QeoSedWmM" frameborder="0" ></iframe>-->
-                <!--</div>-->
                 <div class="video2">
                     <video id="my-player" class="video-js vjs-big-play-centered" controls preload="auto" width="1050" height="500"  data-setup='{}'>
                         <source src="/images/incredible2.mp4">
                     </video>
-                    <form action = "play/praise" method="post">
-					   <button type="submit">赞</button>
-                    </form>
-                    <form action = "play/pay" method="post">
-					   <button type="submit">打赏</button>
-                    </form>
-                    <!-- <input> -->
+                    <div class="play_button">
+                        <button class="praise" id="pra" onclick="changeColor(this)"> Good </button>
+                        <button class="reward">Reward</button>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -102,32 +69,31 @@
                         <div class="wpb_wrapper">
                             <img src="/images/f_logo.png" alt="">
                         </div>
-                        <br><p>writer something in footer</p>
-                        <p>xxxxxxxxxxxxxxxxxxxxxx</p>
+                        <div class="copy">
+                            <p>&copy;all right reserved</p>
+                        </div>
                     </div>
                     <div class="footer_box">
                         <div class="col_1_of_3 span_1_of_3">
-                            <h3>XXXXXXX</h3>
+                            <h3>Categories</h3>
                             <ul class="first">
-                                <li><a href="#">XXX</a></li>
-                                <li><a href="#">XXX</a></li>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="/rewards">Rewards</a></li>
                             </ul>
                         </div>
                         <div class="col_1_of_3 span_1_of_3">
                             <h3>About us</h3>
                             <ul class="first">
-                                <li><a href="#">XXX</a></li>
-                                <li><a href="#">XXX</a></li>
+                                <li><a href="#">Yan Chen</a></li>
+                                <li><a href="#">Xinli Hou</a></li>
                             </ul>
-                            <div class="copy">
-                                <p>&copy;all right reserved</p>
-                            </div>
                         </div>
-                        <div class="col_1_of_3 span_1_of_3">
-                            <h3>XXXXXXX</h3>
+                        <div class="col_1_of_3_2 span_1_of_3">
                             <ul class="first">
-                                <li><a href="#">XXX</a></li>
-                                <li><a href="#">XXX</a></li>
+                                <li></li>
+                                <li><a href="#">Yun Yang</a></li>
+                                <li><a href="#">Shanchen Zou</a></li>
+                                <li><a href="#">Yuanqing Zhang</a></li>
                             </ul>
                         </div>
                         <div class="clearfix"></div>
@@ -139,5 +105,18 @@
     </div>
 
 </body>
+
+<script type="text/javascript">
+        var time=0;
+    function changeColor(btn) {
+            if(time%2==1) {
+                btn.style.background = "#6103d2";
+            }
+            if(time%2==0){
+                btn.style.background="#d40100";
+            }
+            time++;
+    }
+</script>
 
 </html>
