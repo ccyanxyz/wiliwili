@@ -1,7 +1,8 @@
-D:
-cd D:\Xinli\Univ\JuniorS1\Digital_Assets_Management\wiliwili\src
+
+cd C:\Users\77597\Documents\GitHub\wiliwili\src
+
+mongod --dbpath "C:\Users\77597\Documents\GitHub\wiliwili\src\data\db" --logpath "C:\Users\77597\Documents\GitHub\wiliwili\src\data\log\mongo.log"
 
 npm start
 
-net start mongodb
 

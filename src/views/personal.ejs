@@ -8,6 +8,7 @@
     <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
      <link href="/css/personal.css" rel='stylesheet' type='text/css' />
+    <link href="/css/RewardList.css" rel='stylesheet' type='text/css' />
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
@@ -133,21 +134,14 @@
                     <button onclick="{location.href='/post'}">Post</button>
                 </a>
                 <img src="/images/Line.png" class="personal-line"/>
-                <div class="col-md-5 grid_3">
-                    <div class="row_1">
-                        <div class="col-md-6 grid_4">
-                            <table>
-                            <% rewards.forEach(function(reward){%>
-                                <tr>
-                                    <div class="RL-Title">Title</div>
-                                    <div class="RL-Person">发帖人：<%=reward.email%></div>
-                                    <div class="RL-content">content: <%=reward.description%></div>
-                                    <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
-                                </tr>
-                            <%})%>
-                            </table>
-                        </div>
+                <div class="content">
+                    <% rewards.forEach(function(reward){%>
+                    <div class="card">
+                        <div class="RL-Title"><%=reward.title%></div>
+                        <div class="RL-content"><%=reward.description%></div>
+                        <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
                     </div>
+                    <%})%>
                 </div>
                 <div class="clearfix"></div>
             </div>
