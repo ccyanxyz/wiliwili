@@ -110,8 +110,6 @@ router.get('/pay', function(req, res, next){
 				receiver_email = ret[0].email;
 				console.log("receiver_email: ", receiver_email);
 			}
-		});
-		try{
 			query1 = {email: giver.email}
 			User.update(query1, {$inc:{points:-amount}}, (err,ret) => {
 				if(err){
@@ -120,16 +118,14 @@ router.get('/pay', function(req, res, next){
 				}
 			});
 			query2 = {email: receiver_email}
-			User.update(query2, {$inc:{points:-amount}}, (err,ret) => {
+			User.update(query2, {$inc:{points:+amount}}, (err,ret) => {
 				if(err){
 					console.log("play.js: Error line 105" + err);
 					res.status('500').send("play.js: Error line 105" + err);
 				}
 			});
 			res.status('200').send();
-		}catch(err){
-			console.log("play.js: Error line "+ err);
-		}
+		});
 	} else {
 		var user = {};
 		console.log("ERROR! play.js line 115");
