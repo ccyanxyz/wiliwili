@@ -104,7 +104,7 @@
 							<h2>Videos<h2>
 							<% for(var i = 0; i < videos.length; i++) {%>
 							<div class="grid_2 col_1">
-							<a href="play">
+							<a href="play/?id=<%= videos[i]._id %>">
 							<img src="<%=videos[i].picUrl%>" class="img-responsive" alt=""/>
 							<div class="caption1">
 							<ul class="list_3">

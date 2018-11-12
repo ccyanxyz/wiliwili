@@ -1,5 +1,5 @@
 var express = require('express');
-var { User } = require('../models/db');
+var { User, Videos } = require('../models/db');
 
 var router = express.Router();
 
@@ -8,10 +8,42 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/', (req, res) => {
+	var vid = req.query.id;
+	console.log("vid", vid);
+	var query = {_id: vid};
+	Videos.find(query, (err, videos)=>{
+		if(err){
+			console.log(err);
+			return;
+		}
+		else if(videos.length == 0){
+			console.log("ERROR! play.js line 20");
+			return;
+		}
+		else{
+			var video = videos[0];
+			var uid = video.email;
+			query = {email: uid};
+			User.find(query, (err, users)=>{
+				if(err){
+					console.log(err);
+					return;
+				}
+				else if(videos.length == 0){
+					console.log("ERROR! play.js line 33");
+					return;
+				}
+				else{
+					var user = users[0];
+				}
+			});
+		}
+	});
 	res.render('play');
 });
 
-router.post('/praise', (req, res) => {
+router.get('/praise', (req, res) => {
+	var vid = req.query.id;
 	var email = req.body.email; // 没搞定
 	User.update({email:email}, {$inc:{points:1}}, (err,ret) => {
 		if(err)

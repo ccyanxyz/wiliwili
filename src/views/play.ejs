@@ -44,11 +44,12 @@
             <div class="content">
                 <div class="video2">
                     <video id="my-player" class="video-js vjs-big-play-centered" controls preload="auto" width="1050" height="500"  data-setup='{}'>
-                        <source src="/images/incredible2.mp4">
+                        <source src="/images/03.mp4">
                     </video>
                     <div class="play_button">
+                        <button class="praise" id="pra" onclick="upvote();"> Good </button>
                         <form action="/post/post_reward" method="post">
-                            <button class="praise" id="pra" onclick="changeColor(this)"> Good </button>                    
+                            <button class="praise" id="pra" onclick="changeColor(this)"> Good </button>           
                             <input type="text" name="reward amount" placeholder="1000"/>
                             <button class="reward">Reward</button>
                         </form>
@@ -110,7 +111,7 @@
 </body>
 
 <script type="text/javascript">
-        var time=0;
+    var time=0;
     function changeColor(btn) {
             if(time%2==1) {
                 btn.style.background = "#6103d2";
@@ -119,6 +120,25 @@
                 btn.style.background="#d40100";
             }
             time++;
+    }
+    function upvote(){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange=function()
+            {
+            if (xhr.readyState==4 && xhr.status==200)
+            {
+            }
+        }
+        var url = "/play/praise?vid=";
+        url += getQueryString('id');
+        xhr.open("GET", url);
+        xhr.send();
+    }
+    function getQueryString(name)
+    {
+         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+         var r = window.location.search.substr(1).match(reg);
+         if(r!=null)return  unescape(r[2]); return null;
     }
 </script>
 
