@@ -11,14 +11,15 @@ router.get('/', function(req, res, next) {
 		res.locals.message = 'Please login';
 		res.locals.error = {status:'not logged in', stack:'please login'};
 		res.render('error')
-	}	
+	}
+	// if(req.session.message == '')
 	var query = {email: req.session.user.email};
 	User.find(query, (err, users) => {
+		console.log("User.first");
 		if(err){
 			console.log(err);
 			return;
 		}
-
 		if(users.length == 0){
 			console.log('find 0 users with email: ' + req.session.user.email);
 			return;
@@ -30,17 +31,19 @@ router.get('/', function(req, res, next) {
 
 		// TODO: find user's video upload list and reward post list in database and fill above 2 arrays
 		Post.find({email: user["email"]}, (err, post_ret) => {
+			console.log("Post.first");
 			if(err){
 				console.log("personal.js: Error " + err);
 				return;
 			}
 			
+			var rewards = [];
 			if(post_ret.length != 0){
 				rewards = post_ret[0]["rewardPosts"];
-			
 				console.log("rewards");
 				console.log(rewards);			
 				Upload.find({email: user["email"]}, (err, upload_ret) => {
+					console.log("Upload.first");
 					if(err){
 						console.log("personal.js: Error " + err);
 						return;
@@ -51,6 +54,9 @@ router.get('/', function(req, res, next) {
 					console.log(videos);
 					res.render('personal', {user:user, rewards: rewards, videos: videos});
 				});
+			}
+			else{
+				res.render('personal', {user:user, rewards: rewards, videos: videos});
 			}
 		});
 	});
