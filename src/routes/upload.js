@@ -70,12 +70,9 @@ router.post('/upload_video', (req, res) => {
 			videoUrl: video.path.replace('public\\', ""), // local path of this video
 			title: body.title,	
 			description: body.description,
-<<<<<<< HEAD
-			picUrl: thumbnail.path, // local path of video pic
-			upVote: 0
-=======
+			//picUrl: thumbnail.path, // local path of video pic
 			picUrl: thumbnail.path.replace('public\\', ""), // local path of video pic
->>>>>>> b46c34473de8e323bbd769e742d19b2ba84cd038
+			upVote: 0
 	    };
 
 	    Video.create(_video, function(err){
