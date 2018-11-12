@@ -28,6 +28,7 @@ var storage = multer.diskStorage({
     }
 });
 
+//
 // 通过 storage 选项来对 上传行为 进行定制化
 var upload = multer({ storage: storage })
 
