@@ -71,7 +71,9 @@ router.post('/upload_video', (req, res) => {
 			title: body.title,	
 			description: body.description,
 			picUrl: thumbnail.path, // local path of video pic
+			upVote: 0
 	    };
+
 	    Video.create(_video, function(err){
 	    	if (err) {
 	    		console.log(err);

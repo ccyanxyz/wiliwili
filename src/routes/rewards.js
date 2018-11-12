@@ -7,6 +7,16 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
+function compare(x, y) {
+	if(x.wili < y.wili){
+		return 1;
+	} else if(x.wili > y.wili) {
+		return -1;
+	} else {
+		return 0;
+	}
+}
+
 router.get('/', (req, res) => {
 	// TODO: find all reward posts in database and fill in the ejs template
 	Post.find({},{rewardPosts:1,_id:0}).exec((err, ret) => {
@@ -26,6 +36,8 @@ router.get('/', (req, res) => {
 					console.log(data[j]);
 				}
 			}
+
+			rewards.sort(compare);
 			res.render('rewards', {rewards: rewards});
 		}
 
