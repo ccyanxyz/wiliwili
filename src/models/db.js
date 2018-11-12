@@ -20,6 +20,7 @@ var videoModel = new Schema({
 	title: String,	
 	description: String,
 	picUrl: String, // local path of video pic
+	upVote: Number
 });
 
 // user-video schema

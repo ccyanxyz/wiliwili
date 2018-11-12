@@ -47,11 +47,10 @@
                         <source src="/images/03.mp4">
                     </video>
                     <div class="play_button">
-                        <button class="praise" id="pra" onclick="upvote();"> Good </button>
-                        <form action="/post/post_reward" method="post">
-                            <button class="praise" id="pra" onclick="changeColor(this)"> Good </button>           
-                            <input type="text" name="reward amount" placeholder="1000"/>
-                            <button class="reward">Reward</button>
+                        <form action="return false;" method="post">
+                            <button class="praise" id="pra" onclick="upvote();return false;"> Good </button>
+                            <button class="reward" onclick="pay();return false;"> Reward </button>
+                            <input type="text" id="reward_amount" name="amount" placeholder="1000"/>
                         </form>
                     </div>
                 </div>
@@ -123,17 +122,43 @@
     }
     function upvote(){
         var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
         xhr.onreadystatechange=function()
             {
             if (xhr.readyState==4 && xhr.status==200)
             {
+                alert('点赞成功！');
+            }
+            else if (xhr.readyState == 4 && xhr.status==501){
+                top.location.href = '/login';
             }
         }
         var url = "/play/praise?vid=";
         url += getQueryString('id');
-        xhr.open("GET", url);
+        xhr.open("GET", url, true);
         xhr.send();
     }
+    function pay(){
+        var amount = document.getElementById('reward_amount').value;
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.onreadystatechange=function()
+            {
+            if (xhr.readyState==4 && xhr.status==200)
+            {
+                alert('充电成功！金额='+ amount);
+            }
+            else if (xhr.readyState == 4 && xhr.status==501){
+                top.location.href = '/login';
+            }
+        }
+        var url = "/play/pay?vid=";
+        url += getQueryString('id');
+        url += '&amount='
+        url += String(amount);
+        xhr.open("GET", url, true);
+        xhr.send();
+    }    
     function getQueryString(name)
     {
          var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
