@@ -35,49 +35,47 @@
                 </a>
             </div>
            <br/>
-
-
             <div class="content">
                 <form id="upform" action="/upload/upload_video" method="post" enctype="multipart/form-data" ></form>
-                <div class="personal-Title"> 上传视频</div>
+                <div class="personal-Title"> Upload Video</div>
                 <img src="/images/Line.png" class="personal-line"/>
                 <table class="reward-table">
                     <tr>
                         <th>
-                            <div class="money-title">视频标题</div>
+                            <div class="money-title">Title</div>
                         </th>
                         <td>
                             <div class="reward-content">
                                 <div class="reward-title">
-                                    <input type="text" form="upform" name="title" placeholder="请输入视频标题"/>
+                                    <input type="text" form="upform" name="title" placeholder="Please enter the video title here..."/>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <th><div class="money-title">视频描述</div></th>
+                        <th valign ="top"><div class="money-title">Description</div></th>
                         <td>
                             <div class="reward-content">
                                 <div class="reward-info">
-                                    <textarea rows="9" name="description"cols="30" form="upform" placeholder="请在此输入正文"></textarea>
+                                    <textarea rows="9" name="description"cols="30" form="upform" placeholder="Please enter the description here..."></textarea>
                                 </div>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <th><div class="money-title">封面图片</div></th>
-                        <td>
+                        <th valign ="top"><div class="money-title">Cover Image</div></th>
+                        <td valign ="top">
                             <div class="Up-upload">
-                                 <input type="file" id="chooseImage" name="thumbnail" form="upform" accept="image/*" />选择图片
+                                 <input type="file" id="chooseImage" name="thumbnail" form="upform" accept="image/*" />Choose Image
                             </div>
                             <img id="cropedBigImg" value='custom'  data-address=''class="pic" />
                         </td>
                     </tr>
                     <tr>
-                        <th><div class="money-title">上传视频</div></th>
+                        <th valign ="top"><div class="money-title">Upload Video</div></th>
                         <td>
                             <div class="Up-upload">
-                                <input type="file" id="chooseVideo" name="video" form="upform" accept="video/*"/>选择视频
+                                <input type="file" id="chooseVideo" name="video" form="upform" accept="video/*"/>Choose video
                             </div>
                             <video id="cropedVideo"class="upload-video" ></video>
                         </td>
@@ -86,7 +84,7 @@
                 </table>
 
                 <div class="reward-button" align="center">
-                    <input type="submit" form="upform" value="上传">
+                    <input type="submit" form="upform" value="UPLOAD">
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -95,9 +93,9 @@
 <script type="text/javascript">
 
 　 　 $('#chooseImage').on('change',function(){
-    	var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
-    		fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
-    		src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
+        var filePath = $(this).val(),         //获取到input的value，里面是文件的路径
+            fileFormat = filePath.substring(filePath.lastIndexOf(".")).toLowerCase(),
+            src = window.URL.createObjectURL(this.files[0]); //转成可以在本地预览的格式
 
         $('#cropedBigImg').attr('src',src);
 });
