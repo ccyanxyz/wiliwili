@@ -56,10 +56,10 @@
 						<% if(!user.username) { %>
 						<li><p><a href="login">Sign in</a> / <a href="register">Sign up</a> </p></li><br>
 						<% } else { %>
-						<li><p><a href="personal"><%= user.username %></a></p></li>
+						<li><p><a href="personal">Hi, <%= user.username %>!</a></p></li>
 						<!--<li><p><a href="personal">Home</a></p></li>-->
 						<% } %>
-						<li><p><a href="rewards">&nbsp Reward List</a></p></li><br>
+						<br>
                         <div class="clearfix"></div>
                     </ul>
                 </div>

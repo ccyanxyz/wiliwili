@@ -47,8 +47,11 @@
                         <source src="/images/incredible2.mp4">
                     </video>
                     <div class="play_button">
-                        <button class="praise" id="pra" onclick="changeColor(this)"> Good </button>
-                        <button class="reward">Reward</button>
+                        <form action="/post/post_reward" method="post">
+                            <button class="praise" id="pra" onclick="changeColor(this)"> Good </button>                    
+                            <input type="text" name="reward amount" placeholder="1000"/>
+                            <button class="reward">Reward</button>
+                        </form>
                     </div>
                 </div>
                 <div class="clearfix"></div>
