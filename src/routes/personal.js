@@ -1,6 +1,6 @@
 var express = require('express');
 var { User, Upload, Post} = require('../models/db.js');
-// var transfer = require('../utils/token_transfer.js');
+var transfer = require('../utils/token_transfer.js');
 
 var router = express.Router();
 
@@ -40,26 +40,6 @@ router.get('/', function(req, res, next) {
 			}
 			if(post_ret.length != 0)
 				rewards = post_ret[0]["rewardPosts"];
-<<<<<<< HEAD
-			
-				console.log("rewards");
-				console.log(rewards);			
-				Upload.find({email: user["email"]}, (err, upload_ret) => {
-					if(err){
-						console.log("personal.js: Error " + err);
-						return;
-					}
-					if(upload_ret.length != 0)
-						videos = upload_ret[0]["videos"];
-					console.log("videos");
-					console.log(videos);
-					res.render('personal', {user:user, rewards: rewards, videos: videos});
-				});
-			} else {
-				res.render('personal', {user:user, rewards: rewards, videos: videos});
-				return;
-			}
-=======
 			console.log("rewards");
 			console.log(rewards);			
 			Upload.find({email: user["email"]}, (err, upload_ret) => {
@@ -73,7 +53,6 @@ router.get('/', function(req, res, next) {
 				console.log(videos);
 				res.render('personal', {user:user, rewards: rewards, videos: videos});
 			});
->>>>>>> b46c34473de8e323bbd769e742d19b2ba84cd038
 		});
 	});
 });
