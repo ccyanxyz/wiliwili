@@ -161,10 +161,20 @@
                 <div class="col-md-5 grid_3">
                     <div class="row_1">
                         <div class="col-md-6 grid_4" id="video_list2">
-
-                            {# submodule #}
-
-
+                            <% for(var i = 0; i < videos.length; i++) {%>
+                            <div class="grid_2 col_1">
+                            <a href="play">
+                            <img src="<%=videos[i].picUrl%>" class="img-responsive" alt=""/>
+                            <div class="caption1">
+                            <ul class="list_3">
+                            <li><i class="icon5"></i></li>
+                            </ul>
+                            <i class="icon4"></i>
+                                <p class="m_3"><%=videos[i].title%></p>
+                            </div>
+                            </a>
+                            </div>
+                            <%}%>
                         </div>
                     </div>
                 </div>
