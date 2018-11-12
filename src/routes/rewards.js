@@ -38,27 +38,12 @@ router.get('/', (req, res) => {
 			}
 
 			rewards.sort(compare);
+			//req.session.rewards = rewards;
 			res.render('rewards', {rewards: rewards});
 		}
 
 	})
 	
 });
-
-// router.get('/addWili', (req, res) => {
-// 	if(!req.session.user){
-// 		res.locals.message = 'Please login';
-// 		res.locals.error = {status:'not logged in', stack:'please login'};
-// 		res.render('error')
-// 	}
-
-// 	User.find({email:req.session.user.email}, (err, users) => {
-// 		if(err){
-// 			console.
-// 		}
-
-
-// 	}
-
 
 module.exports = router;

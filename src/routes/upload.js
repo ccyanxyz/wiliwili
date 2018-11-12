@@ -74,10 +74,12 @@ router.post('/upload_video', (req, res) => {
 	    	email: user.email,
 			videoId: Date.now(),
 			videoUrl: video.path.replace('public/', ""), // local path of this video
+			//videoUrl: video.path.replace('public\\', ""), // local path of this video
 			title: body.title,	
 			description: body.description,
 			//picUrl: thumbnail.path, // local path of video pic
 			picUrl: thumbnail.path.replace('public/', ""), // local path of video pic
+			//picUrl: thumbnail.path.replace('public\\', ""), // local path of video pic
 			upVote: 0
 	    };
 
