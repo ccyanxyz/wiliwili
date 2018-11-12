@@ -21,11 +21,11 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
     	var name = file.originalname;
-        // 将保存文件名设置为 字段名 + 时间戳，比如 logo-1478521468943
-        // if ( file.fieldname == 'thumbnail' );
-        	// name += '.png';
-        // else if( file.fieldname == 'video' )
-        cb(null, name);  
+    	var ext = name.substr(name.lastIndexOf('.'));
+    	var main = name.substr(0, name.lastIndexOf('.'));
+    	main += ( '-' + String(Date.now()) );
+    	var res = main + ext; 
+        cb(null, res);  
     }
 });
 
@@ -54,7 +54,6 @@ router.post('/upload_video', (req, res) => {
 	    //   console.log("Other error")
 	    //   res.redirect("../");
 	    // }
-		console.log("main in")
 	    var body = req.body;
 		var files = req.files;
 		var thumbnail = files['thumbnail'][0];
