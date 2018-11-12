@@ -1,5 +1,5 @@
 var express = require('express');
-var { User, Rewards } = require('../models/db');
+var { User, Reward, Post } = require('../models/db');
 
 var router = express.Router();
 
@@ -9,9 +9,28 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 router.get('/', (req, res) => {
 	// TODO: find all reward posts in database and fill in the ejs template
-	var rewards = [];
+	Post.find({},{rewardPosts:1,_id:0}).exec((err, ret) => {
+		if(err) {
+			conslie.log("Error:" + err);
+		}
+		else {
+			var rewards = [];
+			console.log("find data");
+			for(var i = 0, len = ret.length; i < len; i++){
+				console.log(ret[i]);
+				console.log(ret[i]["rewardPosts"]);
+				var data = ret[i]["rewardPosts"];
+				for(var j = 0,len1 = data.length; j < len1; j++){
+					console.log("push data");
+					rewards.push(data[j]);
+					console.log(data[j]);
+				}
+			}
+			res.render('rewards', {rewards: rewards});
+		}
 
-	res.render('rewards', {rewards: rewards});
+	})
+	
 });
 
 module.exports = router;

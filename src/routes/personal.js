@@ -1,6 +1,6 @@
 var express = require('express');
-var { User } = require('../models/db.js');
-var transfer = require('../utils/token_transfer.js');
+var { User, Upload, Post} = require('../models/db.js');
+// var transfer = require('../utils/token_transfer.js');
 
 var router = express.Router();
 
@@ -25,12 +25,35 @@ router.get('/', function(req, res, next) {
 		}
 
 		var user = users[0];
-		var videos = [];
 		var rewards = [];
-		// TODO: find user's video upload list and reward post list in database and fill above 2 arrays
+		var videos = [];
 
-		res.render('personal', {user:user, videos: videos, rewards: rewards});
-	})
+		// TODO: find user's video upload list and reward post list in database and fill above 2 arrays
+		Post.find({email: user["email"]}, (err, post_ret) => {
+			if(err){
+				console.log("personal.js: Error " + err);
+				return;
+			}
+			
+			if(post_ret.length != 0){
+				rewards = post_ret[0]["rewardPosts"];
+			
+				console.log("rewards");
+				console.log(rewards);			
+				Upload.find({email: user["email"]}, (err, upload_ret) => {
+					if(err){
+						console.log("personal.js: Error " + err);
+						return;
+					}
+					if(upload_ret.length != 0)
+						videos = upload_ret[0]["videos"];
+					console.log("videos");
+					console.log(videos);
+					res.render('personal', {user:user, rewards: rewards, videos: videos});
+				});
+			}
+		});
+	});
 });
 
 router.post('/withdraw', (req, res) => {
