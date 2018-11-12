@@ -16,12 +16,15 @@ router.get('/', function(req, res, next) {
 	User.find(query, (err, users) => {
 		if(err){
 			console.log(err);
-			return;
+			res.message = "error finding user";
+			res.render('error', {error:err});
 		}
 
 		if(users.length == 0){
 			console.log('find 0 users with email: ' + req.session.user.email);
-			return;
+			res.message = "user not found";
+			var error = {status: 'user not found', stack: 'user not found'};
+			res.render('error', {error: error});
 		}
 
 		var user = users[0];
@@ -51,6 +54,9 @@ router.get('/', function(req, res, next) {
 					console.log(videos);
 					res.render('personal', {user:user, rewards: rewards, videos: videos});
 				});
+			} else {
+				res.render('personal', {user:user, rewards: rewards, videos: videos});
+				return;
 			}
 		});
 	});
