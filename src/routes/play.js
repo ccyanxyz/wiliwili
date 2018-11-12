@@ -20,10 +20,12 @@ router.get('/', (req, res) => {
 	Video.find(query, (err, videos)=>{
 		if(err){
 			console.log(err);
+			res.render('error');
 			return;
 		}
 		else if(videos.length == 0){
 			console.log("ERROR! play.js line 20");
+			res.render('error');
 			return;
 		}
 		else{
@@ -43,9 +45,10 @@ router.get('/', (req, res) => {
 					var user = users[0];
 				}
 			});
+			console.log(video);
+			res.render('play', {video:video})
 		}
 	});
-	res.render('play');
 });
 
 router.get('/praise', (req, res) => {
