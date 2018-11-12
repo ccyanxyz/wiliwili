@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "node ./bin/www"
   },
   "dependencies": {
     "append-field": "^1.0.0",
@@ -28,7 +28,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "finalhandler": "^1.1.1",
-    "http-errors": "^1.6.3",
+    "http-errors": "^1.7.1",
     "methods": "^1.1.2",
     "mime-db": "^1.37.0",
     "mkdirp": "^0.5.1",
