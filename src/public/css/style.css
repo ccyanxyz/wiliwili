@@ -165,7 +165,7 @@ ul.header_right_box{
 	
 }
 ul.header_right_box li{
-	float: left;
+	float: right;
 	margin: 0%;
 }
 ul.header_right_box li p{
@@ -1505,6 +1505,7 @@ ul.header_right_box {
 }
 .col-sm-3.header_right {
 	padding-left: 0;
+	float: right;
 }
 ul.header_right_box li {
 	margin: 0 1%;
@@ -1877,6 +1878,17 @@ h2.m_3 {
 .play_button{
 	margin-top: 1cm;
 	text-align: center;
+}
+.play_button button{
+	margin-right: 1cm;
+	margin-left: 1cm;
+}
+.play_button input[type="text"]{ 
+	background-color: #DCDCDC;
+    border:none;
+    width:3%;
+    height: 35px;
+    margin-right:-1cm;
 }
 .praise{
 	background: #6103d2;

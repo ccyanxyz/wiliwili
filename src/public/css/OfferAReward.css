@@ -1,22 +1,26 @@
 .reward-content{
     align-items: center;
     margin: 1%;
-    background-color: #dbdde7;
+    background-color: #e3e5ef;
     float: right;
     width: 100%;
     border-radius: 2px;
 }
 .reward-title{
     color: #9d95ab;
-    font-size: 200%;
+    font-size: 150%;
 }
 .reward-title input[type="text"]{
+    color: #9d95ab;
+    font-size: 150%;
     width: 100%;
+    height:40px;
     background-color: rgba(229, 229, 229, 0);
     border: none;
 }
 .reward-info{
     color: #9d95ab;
+    font-size: 120%;
 }
 
 .reward-info textarea{
@@ -26,8 +30,9 @@
 }
 
 .money-title{
-    margin: 1% 5%;
-    font-size: 120%;
+    margin-top:7.07px;
+    margin-right:5%;
+    font-size: 150%;
     color: #40176b;
     float: left;
     clear: left;
@@ -38,6 +43,7 @@
 }
 .money input[type="text"]{
     width: 100%;
+    height: 40px;
     background-color: rgba(229, 229, 229, 0);
     border: none;
     font-size: 120%;
@@ -47,16 +53,17 @@
 
 }
 .reward-button button{
-    color: #40176b;
-    border:1px solid #9d95ab;
+    color: #f9fbff;
+    border:1px solid #6103d2;
     border-radius: 4px;
-    background-color: #cfc5dd;
+    background-color: #6103d2;
     width: 20%;
     font-size: 150%;
     transition: 0.5s all;
-	-webkit-transition: 0.5s all;
-	-moz-transition: 0.5s all;
-	-o-transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    margin-top: 0.5cm;
 }
 
 .reward-button button:hover{
@@ -77,9 +84,12 @@
 .pic{
     max-width: 30%;
 }
+
+
 .Up-upload {
-    margin: 3% 35% 3% 0%;
-    width: 10%;
+    margin: 1% 10% 3% 0%;
+    width: 15%;
+    height:200%;
     position: relative;
     cursor: pointer;
     color: #888;
@@ -91,10 +101,10 @@
     *display: inline;
     *zoom: 1;
     text-align: center;
+    vertical-align: top;
 }
 
 .Up-upload  input {
-    float: left;
     position: absolute;
     font-size: 100%;
     right: 0;
@@ -111,5 +121,19 @@
     text-decoration: none
 }
 .upload-video{
+    margin-top: 1%;
     max-width: 50%;
+}
+.upload-img{
+    margin-top: 1%;
+    max-width: 50%;
+}
+
+input::-webkit-input-placeholder {
+    color: #bfbecd;
+    font-size: 12px;
+    }
+textarea::-webkit-input-placeholder {
+    color: #bfbecd;
+    font-size: 12px;
 }
