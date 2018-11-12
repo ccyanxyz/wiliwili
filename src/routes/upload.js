@@ -45,7 +45,8 @@ router.post('/upload_video', (req, res) => {
 	}
 	console.log("upload_video in")
 	upload_func(req, res, function(err){
-		console.log("upload_func in")
+		console.log("upload_func in");
+		console.log(req.files);
 	    // if (err instanceof multer.MulterError) {
 	    //   console.log("multer.MulterError");
 	    //   res.redirect("../");
@@ -63,7 +64,6 @@ router.post('/upload_video', (req, res) => {
 
 	    var user = req.session.user;
 	    var query = {email: user.email};
-	    // console.log(video.path.replace('public\\', ""));
 	    var _video = {
 	    	email: user.email,
 			videoId: Date.now(),
