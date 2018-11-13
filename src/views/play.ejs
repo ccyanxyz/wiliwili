@@ -123,10 +123,8 @@
     function upvote(){
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
-        xhr.onreadystatechange=function()
-            {
-            if (xhr.readyState==4 && xhr.status==200)
-            {
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState==4 && xhr.status==200){
                 alert('点赞成功！');
             }
             else if (xhr.readyState == 4 && xhr.status==501){
@@ -140,12 +138,14 @@
     }
     function pay(){
         var amount = document.getElementById('reward_amount').value;
+        if( amount == ''){
+            alert('请输入金额！');
+            return false;
+        }
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
-        xhr.onreadystatechange=function()
-            {
-            if (xhr.readyState==4 && xhr.status==200)
-            {
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState==4 && xhr.status==200){
                 alert('充电成功！金额='+ amount);
             }
             else if (xhr.readyState == 4 && xhr.status==501){
