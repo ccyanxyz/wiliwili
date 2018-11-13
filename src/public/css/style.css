@@ -554,8 +554,8 @@ border-right: none;
 border-bottom: 1px solid #6103d2;
 background: none;
 position: absolute;
-left:1120px;
-top:85px;
+left:73%;
+top:12%;
 margin-bottom: 2em;
 float:right;
 }
@@ -669,6 +669,7 @@ padding: 0;
 	margin-left: 2em;
 	width:30%;
 }
+
 .col_2{
 	background:#fff;
 }
@@ -690,6 +691,9 @@ span.m_4{
 }
 .row_2{
 	margin-top:2em;
+}
+.row_1 h2{
+	margin-left: 0.8cm;
 }
 ul.list_5{
 	position: absolute;
@@ -1888,7 +1892,7 @@ h2.m_3 {
     border:none;
     width:3%;
     height: 35px;
-    margin-right:-1cm;
+    margin-left:-1cm;
 }
 .praise{
 	background: #6103d2;
