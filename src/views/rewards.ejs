@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,28 +41,57 @@
             <div class="content">
                 <div class="personal-Title">Reward List</div>
                 <img src="..//images/Line.png" class="personal-line"/>
-                 <% rewards.forEach(function(reward){%>
-                <div class="card">
+                <div class = "yy add to get index XD">
+                     <% rewards.forEach(function(reward){%>
+                    <div class="card">
 
-                    <div class="RL-Title" name="title"><%=reward.title%></div>
-                    <div class="RL-Person" name="email">发帖人：<%=reward.email%></div>
-                    <div class="RL-content" name="description"> <%=reward.description%></div>
-
-					<a href="/upload"><button>Upload</button></a>
-                    <div class="RL-money" name="wili">悬赏金额：<%=reward.wili%> wili</div>
-
-					</div>
-                <%})%>
-
+                        <div class="RL-Title"><%=reward.title%></div>
+                        <div class="RL-Person">发帖人：<%=reward.email%></div>
+                        <div class="RL-content"> <%=reward.description%></div>
+    					<a href="/upload"><button>Upload</button></a>
+                        <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
+                        <input name="upAmount"></input>
+                        <button onclick="getIndex(this); return false;">Up</button>
+                    </div>
+                    <%})%>
+                </div>
 
                 <div class="clearfix"></div>
             </div>
         </div>
 </div>
-<script tpye="text/javascript" src="..//js/ejs_production.js"></script>
-<script tpye="text/javascript" src="..//js/ejs_fulljslint.js"></script>
+<script type="text/javascript" src="..//js/ejs_production.js"></script>
+<script type="text/javascript" src="..//js/ejs_fulljslint.js"></script>
+<script type="text/javascript">
+    function getIndex(obj){
+        var index = $(obj).parent(".card").index();
+        var up = $(obj).parent(".card").find("input").val();
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState==4 && xhr.status==200){
+                top.location.href= '/rewards';
+            }
+            else if (xhr.readyState == 4 && xhr.status==501){
+                top.location.href = '/login';
+            }
+            else if (xhr.readyState == 4 && xhr.status==502){
+                top.location.href= '/rewards';
+            }
+        }
+
+        var url = "/rewards/addWili?index=";
+        url += String(index);
+        url += "&up="
+        url += String(up);
+        alert(url);
+        xhr.open("GET", url, true);
+        xhr.send();
+    }
+</script>
+
+
 
 
 </body>
 </html>
-
