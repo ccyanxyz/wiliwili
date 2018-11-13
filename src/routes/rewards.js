@@ -38,7 +38,7 @@ router.get('/', (req, res) => {
 			}
 
 			rewards.sort(compare);
-			req.session.rewards = rewards;
+			req.session.rewards = rewards;+
 			res.render('rewards', {rewards: rewards});
 		}
 
@@ -126,6 +126,5 @@ router.get('/addWili', (req, res) => {
 	});
 	res.status('200').send();
 });
-
 
 module.exports = router;
