@@ -141,6 +141,10 @@
     }
     function pay(){
         var amount = document.getElementById('reward_amount').value;
+        if( amount == ''){
+            alert('请输入金额！');
+            return false;
+        }
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
         xhr.onreadystatechange=function()
