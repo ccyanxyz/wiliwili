@@ -71,18 +71,17 @@ router.post('/upload_video', (req, res) => {
 
 	    var user = req.session.user;
 	    var query = {email: user.email};
-	    var _video = {
+	    var _video = new Video({
 	    	email: user.email,
 			videoId: Date.now(),
-			videoUrl: video.path.replace('public/', ""), // local path of this video
+			 videoUrl: video.path.replace('public/', ""), // local path of this video
 			//videoUrl: video.path.replace('public\\', ""), // local path of this video
 			title: body.title,	
 			description: body.description,
-			//picUrl: thumbnail.path, // local path of video pic
-			picUrl: thumbnail.path.replace('public/', ""), // local path of video pic
+			 picUrl: thumbnail.path.replace('public/', ""), // local path of video pic
 			//picUrl: thumbnail.path.replace('public\\', ""), // local path of video pic
 			upVote: 0
-	    };
+	    });
 
 	    Video.create(_video, function(err){
 	    	if (err) {
