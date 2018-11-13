@@ -124,10 +124,8 @@
     function upvote(){
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
-        xhr.onreadystatechange=function()
-            {
-            if (xhr.readyState==4 && xhr.status==200)
-            {
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState==4 && xhr.status==200){
                 alert('点赞成功！');
             }
             else if (xhr.readyState == 4 && xhr.status==501){
@@ -147,10 +145,8 @@
         }
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
-        xhr.onreadystatechange=function()
-            {
-            if (xhr.readyState==4 && xhr.status==200)
-            {
+        xhr.onreadystatechange=function(){
+            if (xhr.readyState==4 && xhr.status==200){
                 alert('充电成功！金额='+ amount);
             }
             else if (xhr.readyState == 4 && xhr.status==501){
