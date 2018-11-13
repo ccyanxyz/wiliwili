@@ -7,7 +7,9 @@ var bodyParser = require('body-parser');
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
-router.get('/', (req, res) => {
+router.get('', (req, res) => {
+	console.log(req.query);
+	
 	try{
 		var vid = req.query.id;
 		console.log("vid", vid);
