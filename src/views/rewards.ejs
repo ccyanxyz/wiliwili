@@ -43,16 +43,17 @@
                 <div class="personal-Title">Reward List</div>
                 <img src="..//images/Line.png" class="personal-line"/>
                  <% rewards.forEach(function(reward){%>
+				 <a href="/upload">
                 <div class="card">
 
                     <div class="RL-Title" name="title"><%=reward.title%></div>
                     <div class="RL-Person" name="email">发帖人：<%=reward.email%></div>
                     <div class="RL-content" name="description"> <%=reward.description%></div>
 
-					<a href="/upload"><button>Upload</button></a>
                     <div class="RL-money" name="wili">悬赏金额：<%=reward.wili%> wili</div>
 
 					</div>
+					</a>
                 <%})%>
 
 
