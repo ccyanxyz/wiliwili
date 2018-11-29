@@ -34,6 +34,9 @@ border-top-right-radius: 3px;
 }
 .logo{
 	margin-top: 11px;
+	width: 250px;
+}
+.logo img{
 }
 /*---social-icons-----*/
 .nav {
@@ -554,10 +557,9 @@ border-right: none;
 border-bottom: 1px solid #6103d2;
 background: none;
 position: absolute;
-left:76%;
-top:10%;
 margin-bottom: 2em;
 float:right;
+display: inline-block;
 }
 .search form input[type="text"] {
 padding: 3px 0;
@@ -1509,7 +1511,6 @@ ul.header_right_box {
 }
 .col-sm-3.header_right {
 	padding-left: 0;
-	float: right;
 }
 ul.header_right_box li {
 	margin: 0 1%;
@@ -1567,11 +1568,11 @@ p.text{
 }
 @media only screen and (max-width:640px) {
 ul.header_right_box {
-	text-align: center;
+	text-align: right;
 }	
 ul.header_right_box li {
 	display: inline-block;
-	float: none;
+	float: right;
 }
 .logo {
 	margin:10px 0 10px;
@@ -1877,6 +1878,12 @@ h2.m_3 {
 	margin-top: 30px;
 	margin-left: 15px;
 	float:left;
+	display: inline-block;
+	width: 100%;
+}
+.video2 video
+{
+	width: 100%;
 }
 
 .play_button{
