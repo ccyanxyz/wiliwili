@@ -21,7 +21,11 @@ router.post('/post_reward', (req, res) => {
 		email: user_email,
 		title: title,
 		wili: wili,
-		description: description
+		description: description,
+		uploaded: false,
+		uploader: '',
+		videoLink: '',
+		finished: false
 	});
 
 	reward.save((err, re) => {

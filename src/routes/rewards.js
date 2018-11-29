@@ -32,13 +32,15 @@ router.get('/', (req, res) => {
 				var data = ret[i]["rewardPosts"];
 				for(var j = 0,len1 = data.length; j < len1; j++){
 					console.log("push data");
-					rewards.push(data[j]);
+					if(data[j].uploaded == false){
+						rewards.push(data[j]);
+					}
 					console.log(data[j]);
 				}
 			}
 
 			rewards.sort(compare);
-			req.session.rewards = rewards;+
+			req.session.rewards = rewards;
 			res.render('rewards', {rewards: rewards});
 		}
 
