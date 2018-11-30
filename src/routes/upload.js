@@ -1,5 +1,5 @@
 var express = require('express');
-var { User, Video, Upload, Reward } = require('../models/db');
+var { User, Video, Upload, Reward, Post } = require('../models/db');
 var multer = require('multer');
 var fs = require('fs');
 var upload = multer({ dest : '' } )
@@ -44,24 +44,14 @@ var upload_func = upload.fields([{name:'thumbnail',maxCount:1},
 	{name:'video', maxCount: 1}] );
 
 router.post('/upload_video', (req, res) => {
-	if(req.session.user == 'undefined'){
+	if(req.session.user === 'undefined'){
 		res.redirect('../../login');
 	}
 	console.log("upload_video in")
 	upload_func(req, res, function(err){
 		console.log("upload_func in");
-		console.log(req.files);
-		// if (err instanceof multer.MulterError) {
-		//   console.log("multer.MulterError");
-		//   res.redirect("../");
-		// } else if (err) {
-		//   console.log("Other error")
-		//   res.redirect("../");
-		// }
 		var body = req.body;
-		var reward_id = req.session.cur_reward;
 		var files = req.files;
-		console.log(files);
 		if(typeof files.thumbnail == 'undefined'){
 			console.log('shit');
 			res.redirect('./');
@@ -69,14 +59,16 @@ router.post('/upload_video', (req, res) => {
 		}
 		var thumbnail = files['thumbnail'][0];
 		var video = files['video'][0];
-		console.log(thumbnail.originalname);
-		console.log(video.originalname);
 		// 一切都好
 
 		var user = req.session.user;
-		var query = {email: user.email};
+		var user_email = user.email;
+		if(user == 'undefined'){
+			res.redirect('../../login');
+		}
+		var query = {email: user_email};
 		var _video = new Video({
-			email: user.email,
+			email: user_email,
 			videoId: Date.now(),
 			 // videoUrl: video.path.replace('public/', ""), // macOS
 			videoUrl: video.path.replace('public\\', ""), // Windows
@@ -92,7 +84,7 @@ router.post('/upload_video', (req, res) => {
 				console.log(err);
 				return;
 			}
-			console.log("yydsb");
+			console.log("video.create()");
 		});
 		Upload.find(query, (err, uploads) => {
 			if (err) {
@@ -100,7 +92,7 @@ router.post('/upload_video', (req, res) => {
 				return;
 			}
 			if(uploads.length === 0){
-				Upload.create({email:user.email, videos:[_video]},function(err, res){
+				Upload.create({email:user_email, videos:[_video]},function(err, res){
 					if(err)
 						console.log(err);
 				} );
@@ -119,7 +111,10 @@ router.post('/upload_video', (req, res) => {
 				});
 				req.session.message = '上传成功！';
 			}
+			var reward_id = req.session.cur_reward;
+			console.log("reward_id:", reward_id);
 			if(reward_id !== 'undefined'){
+				console.log("reward_id defined:", reward_id);
 				query = {_id: reward_id}
 				Reward.find(query, (err, rewards)=>{
 					if (err) {
@@ -131,12 +126,46 @@ router.post('/upload_video', (req, res) => {
 						return;
 					}
 					var reward = rewards[0];
+					var user = req.session.user;
+					var reward_id = req.session.cur_reward;
+					console.log("Upload 135: ", user, "reward_id:", reward_id);
 					reward.uploaded = true;
-					reward.uploader = user.email;
+					reward.uploader = user_email;
 					reward.videoLink = "/play?id="+_video._id;
+
+					Post.find({email:user_email}, (err, ret)=>{
+						var user_rewards = ret[0]['rewardPosts'];
+						console.log("Find in:", user_rewards);
+						for (var i = user_rewards.length - 1; i >= 0; i--) {
+							if(user_rewards[i]._id == req.session.cur_reward){
+								user_rewards[i] = reward;
+								break;
+							}
+						}
+						console.log("Find break:", user_rewards);
+						Post.update({email: user_email}, {rewardPosts: user_rewards}, (err)=>{
+							if(err)
+								console.log("upload.js: post.update() err");
+							else
+								console.log("upload.js: post.update() OK");
+						});
+					})
+
+					var user = req.session.user;
+					var reward_id = req.session.cur_reward;
+					var change = {
+						uploaded: true,
+						uploader: user_email,
+						videoLink: "/play?id="+_video._id
+					}
+					Reward.update({_id:reward_id}, change, (err)=>{
+						if(err)
+							console.log("upload.js: Reward Update Error"+err);
+						// console.log("Upload over, reward:", reward);
+					});
+
 				})
 			}
-
 		});
 		var response = {
 			message: "everything fine",

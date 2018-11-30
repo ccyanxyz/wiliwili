@@ -28,8 +28,6 @@ router.get('/', function(req, res, next) {
 			return;
 		}
 		var videos = ret;
-		console.log(videos);
-
 		videos.sort(compare);
 
 		res.render('index', {user:user, videos:videos});

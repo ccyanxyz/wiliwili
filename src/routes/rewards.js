@@ -42,7 +42,6 @@ router.get('/', (req, res) => {
 
 			rewards.sort(compare);
 			req.session.rewards = rewards;
-			console.log("rewards: ", rewards);
 			res.render('rewards', {rewards: rewards});
 		}
 	})

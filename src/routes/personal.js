@@ -49,8 +49,6 @@ router.get('/', function(req, res, next) {
 				}
 				if(upload_ret.length != 0)
 					videos = upload_ret[0]["videos"];
-				console.log("videos");
-				console.log(videos);
 				res.render('personal', {user:user, rewards: rewards, videos: videos});
 			});
 		});
