@@ -19,7 +19,7 @@ function compare(x, y) {
 
 router.get('/', (req, res) => {
 	// TODO: find all reward posts in database and fill in the ejs template
-	Post.find({},{rewardPosts:1,_id:0}).exec((err, ret) => {
+	Post.find().exec((err, ret) => {
 		if(err) {
 			conslie.log("Error:" + err);
 		}
@@ -33,6 +33,7 @@ router.get('/', (req, res) => {
 				for(var j = 0,len1 = data.length; j < len1; j++){
 					console.log("push data");
 					if(data[j].uploaded == false){
+						console.log("in push");
 						rewards.push(data[j]);
 					}
 					console.log(data[j]);
@@ -43,9 +44,7 @@ router.get('/', (req, res) => {
 			req.session.rewards = rewards;
 			res.render('rewards', {rewards: rewards});
 		}
-
 	})
-	
 });
 
 router.get('/addWili', (req, res) => {

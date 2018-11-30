@@ -135,37 +135,61 @@
                 </a>
                 <img src="/images/Line.png" class="personal-line"/>
                 <div class="content">
-                    <% rewards.forEach(function(reward){%>
-                    <div class="card">
-                        <div class="RL-Title"><%=reward.title%></div>
-                        <div class="RL-content"><%=reward.description%></div>
-                        <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
-                    </div>
-                    <%})%>
+                    <% rewards.forEach(function(reward){
+                        if(reward.uploaded == false){%>
+                            <div class="card">
+                                <div class="RL-Title"><%=reward.title%></div>
+                                <div class="RL-content"><%=reward.description%></div>
+                                <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
+                            </div>
+                    <%}})%>
                 </div>
                 <div class="clearfix"></div>
             </div>
 
             <!-- 新加的已被接悬赏 -->
             <div class="content">
-                <div class="personal-Title"> Rewards have been offered</div>
+                <div class="personal-Title">等待审核</div>
                 <img src="/images/Line.png" class="personal-line"/>
                 <div class="content">
                 <!-- 这里加个循环 -->
-                    <div class="card">
-                        <div class="RL-Title">reward.title</div>
-                        <button class="watchnow">WATCH NOW</button>
-                        <div class="RL-content">reward.description</div>
-                        <div class="RL-money">悬赏金额：reward.wiliwili</div>
+                <% rewards.forEach(function(reward){
+                    if(reward.finished == false && reward.uploaded == true){%>
+                        <div class="RL-Title"><%=reward.title%></div>
+                        <button class="watchnow"><a href=<%=reward.videoLink%>>WATCH NOW</a></button>
+                        <div class="RL-content"><%=reward.description%></div>
+                        <div class="RL-money">悬赏金额：<%=reward.wili%></div>
                         <button class="reject_offer">Reject</button>
                         <button class="confirm_offer">Confirm</button>
                          <div class="clearfix"></div>
                     </div>
+                <%}})%>
+                    <div class="card">
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <!-- 新加的已被接悬赏 -->
+            <div class="content">
+                <div class="personal-Title">已完成</div>
+                <img src="/images/Line.png" class="personal-line"/>
+                <div class="content">
+                <!-- 这里加个循环 -->
+                <% rewards.forEach(function(reward){
+                    if(reward.finished == true){%>
+                        <div class="RL-Title"><%=reward.title%></div>
+                        <button class="watchnow"><a href=<%=reward.videoLink%>>WATCH NOW</a></button>
+                        <div class="RL-content"><%=reward.description%></div>
+                        <div class="RL-money">悬赏金额：<%=reward.wili%></div>
+                         <div class="clearfix"></div>
+                    </div>
+                <%}})%>
+                    <div class="card">
+
                 <!-- 这里加个循环 -->
                 </div>
                 <div class="clearfix"></div>
-            </div>           
-            <!-- 新加的已被接悬赏 -->
+            </div> 
 
             <div class="content">
                 <div class="personal-Title">My Videos</div>
