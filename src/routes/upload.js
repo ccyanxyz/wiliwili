@@ -1,5 +1,5 @@
 var express = require('express');
-var { User, Video, Upload } = require('../models/db');
+var { User, Video, Upload, Reward } = require('../models/db');
 var multer = require('multer');
 var fs = require('fs');
 var upload = multer({ dest : '' } )
@@ -32,11 +32,14 @@ var storage = multer.diskStorage({
 // 通过 storage 选项来对 上传行为 进行定制化
 var upload = multer({ storage: storage })
 
-router.get('/', (req, res) => {
-	res.render('upload');
+router.get('', (req, res) => {
+	var reward_id = req.query.reward_id;
+	req.session.cur_reward = reward_id;
+	res.render('upload', {reward_id: reward_id});
 });
 
-// TODO: upload video, insert a video obj to Video, insert a record to user's upload list in Upload
+// TODO: upload video, insert a video obj to Video, \
+// insert a record to user's upload list in Upload
 var upload_func = upload.fields([{name:'thumbnail',maxCount:1},
 	{name:'video', maxCount: 1}] );
 
@@ -56,6 +59,7 @@ router.post('/upload_video', (req, res) => {
 		//   res.redirect("../");
 		// }
 		var body = req.body;
+		var reward_id = req.session.cur_reward;
 		var files = req.files;
 		console.log(files);
 		if(typeof files.thumbnail == 'undefined'){
@@ -74,12 +78,12 @@ router.post('/upload_video', (req, res) => {
 		var _video = new Video({
 			email: user.email,
 			videoId: Date.now(),
-			 // videoUrl: video.path.replace('public/', ""), // local path of this video
-			videoUrl: video.path.replace('public\\', ""), // local path of this video
+			 // videoUrl: video.path.replace('public/', ""), // macOS
+			videoUrl: video.path.replace('public\\', ""), // Windows
 			title: body.title,	
 			description: body.description,
-			 // picUrl: thumbnail.path.replace('public/', ""), // local path of video pic
-			picUrl: thumbnail.path.replace('public\\', ""), // local path of video pic
+			 // picUrl: thumbnail.path.replace('public/', ""), // macOS
+			picUrl: thumbnail.path.replace('public\\', ""), // Windows
 			upVote: 0
 		});
 
@@ -96,7 +100,7 @@ router.post('/upload_video', (req, res) => {
 				return;
 			}
 			if(uploads.length === 0){
-				Upload.create({email: user.email, videos : [_video] } ,function(err, res){
+				Upload.create({email:user.email, videos:[_video]},function(err, res){
 					if(err)
 						console.log(err);
 				} );
@@ -114,6 +118,23 @@ router.post('/upload_video', (req, res) => {
 					}
 				});
 				req.session.message = '上传成功！';
+			}
+			if(reward_id !== 'undefined'){
+				query = {_id: reward_id}
+				Reward.find(query, (err, rewards)=>{
+					if (err) {
+						console.log(err);
+						return;
+					}
+					if(rewards.length == 0){
+						console.log("No match reward")
+						return;
+					}
+					var reward = rewards[0];
+					reward.uploaded = true;
+					reward.uploader = user.email;
+					reward.videoLink = "/play?id="+_video._id;
+				})
 			}
 
 		});
