@@ -35,7 +35,12 @@ var rewardModel = new Schema({
 	email: String,
 	title: String,
 	wili: Number,
-	description: String
+	description: String,
+	
+	uploaded: Boolean,
+	uploader: String,
+	videoLink: String,
+	finished: Boolean
 });
 
 // user-rewards

@@ -87,7 +87,7 @@
                                 <li onclick="show1()"class="personal-button">TopUp</li>
                                 <div id="div1" style="display:none">
 									<form action="/personal/topup" method="post">
-                                    <input name="amount"id="amount" type="text" placeholder="在此输入金额" />
+                                    <input name="amount"id="amount" type="text" placeholder="input amount" />
                                     <button type="submit" onclick="transfer()">Submit</button>
 									</form>
                                     <script>
@@ -115,8 +115,8 @@
                                 <li onclick="show2()"class="personal-button">Withdraw</li>
                                 <div id="div2" style="display:none">
 									<form action="/personal/withdraw" method="post">
-										<input  name="amount" id="topup_amount" type="text"placeholder="在此输入金额" />
-										<input name="address" id="address"type="text"placeholder="输入您的钱包地址"/>
+										<input  name="amount" id="topup_amount" type="text"placeholder="input amount" />
+										<input name="address" id="address"type="text"placeholder="input your wallet address"/>
 										<button type="submit" formtarget="">Submit</button>
 									</form>
                                 </div>
@@ -145,6 +145,28 @@
                 </div>
                 <div class="clearfix"></div>
             </div>
+
+            <!-- 新加的已被接悬赏 -->
+            <div class="content">
+                <div class="personal-Title"> Rewards have been offered</div>
+                <img src="/images/Line.png" class="personal-line"/>
+                <div class="content">
+                <!-- 这里加个循环 -->
+                    <div class="card">
+                        <div class="RL-Title">reward.title</div>
+                        <button class="watchnow">WATCH NOW</button>
+                        <div class="RL-content">reward.description</div>
+                        <div class="RL-money">悬赏金额：reward.wiliwili</div>
+                        <button class="reject_offer">Reject</button>
+                        <button class="confirm_offer">Confirm</button>
+                         <div class="clearfix"></div>
+                    </div>
+                <!-- 这里加个循环 -->
+                </div>
+                <div class="clearfix"></div>
+            </div>           
+            <!-- 新加的已被接悬赏 -->
+
             <div class="content">
                 <div class="personal-Title">My Videos</div>
                <a href="javascript:;" class="a-upload">
