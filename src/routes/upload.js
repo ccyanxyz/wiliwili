@@ -12,20 +12,20 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 // 通过 filename 属性定制
 var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-    	if (file.fieldname == 'thumbnail')
-    		uploadFolder = './public/upload/thumbnail';
-    	else if( file.fieldname == 'video')
-    		uploadFolder = './public/upload/video';
-        cb(null, uploadFolder);    // 保存的路径，备注：需要自己创建
-    },
-    filename: function (req, file, cb) {
-    	var name = file.originalname;
-    	var ext = name.substr(name.lastIndexOf('.'));
-    	var main = String(Date.now());
-    	name = main + ext; 
-        cb(null, name);  
-    }
+	destination: function (req, file, cb) {
+		if (file.fieldname == 'thumbnail')
+			uploadFolder = './public/upload/thumbnail';
+		else if( file.fieldname == 'video')
+			uploadFolder = './public/upload/video';
+		cb(null, uploadFolder);    // 保存的路径，备注：需要自己创建
+	},
+	filename: function (req, file, cb) {
+		var name = file.originalname;
+		var ext = name.substr(name.lastIndexOf('.'));
+		var main = String(Date.now());
+		name = main + ext; 
+		cb(null, name);  
+	}
 });
 
 //
@@ -48,14 +48,14 @@ router.post('/upload_video', (req, res) => {
 	upload_func(req, res, function(err){
 		console.log("upload_func in");
 		console.log(req.files);
-	    // if (err instanceof multer.MulterError) {
-	    //   console.log("multer.MulterError");
-	    //   res.redirect("../");
-	    // } else if (err) {
-	    //   console.log("Other error")
-	    //   res.redirect("../");
-	    // }
-	    var body = req.body;
+		// if (err instanceof multer.MulterError) {
+		//   console.log("multer.MulterError");
+		//   res.redirect("../");
+		// } else if (err) {
+		//   console.log("Other error")
+		//   res.redirect("../");
+		// }
+		var body = req.body;
 		var files = req.files;
 		console.log(files);
 		if(typeof files.thumbnail == 'undefined'){
@@ -65,14 +65,14 @@ router.post('/upload_video', (req, res) => {
 		}
 		var thumbnail = files['thumbnail'][0];
 		var video = files['video'][0];
-	    console.log(thumbnail.originalname);
-	    console.log(video.originalname);
-	    // 一切都好
+		console.log(thumbnail.originalname);
+		console.log(video.originalname);
+		// 一切都好
 
-	    var user = req.session.user;
-	    var query = {email: user.email};
-	    var _video = new Video({
-	    	email: user.email,
+		var user = req.session.user;
+		var query = {email: user.email};
+		var _video = new Video({
+			email: user.email,
 			videoId: Date.now(),
 			 // videoUrl: video.path.replace('public/', ""), // local path of this video
 			videoUrl: video.path.replace('public\\', ""), // local path of this video
@@ -81,58 +81,58 @@ router.post('/upload_video', (req, res) => {
 			 // picUrl: thumbnail.path.replace('public/', ""), // local path of video pic
 			picUrl: thumbnail.path.replace('public\\', ""), // local path of video pic
 			upVote: 0
-	    });
+		});
 
-	    Video.create(_video, function(err){
-	    	if (err) {
-	    		console.log(err);
-	    		return;
-	    	}
-	    	console.log("yydsb");
-	    });
-	    Upload.find(query, (err, uploads) => {
-	    	if (err) {
-	    		console.log(err);
-	    		return;
-	    	}
-	    	if(uploads.length === 0){
-	    		Upload.create({email: user.email, videos : [_video] } ,function(err, res){
-	    			if(err)
-	    				console.log(err);
-	    		} );
-	    		// console.log("upload failure, invalid user");
-	    	}
-	    	else{
-	    		videos = uploads[0].videos;
-	    		videos.push(_video);
-	    		Upload.update(query, {videos: videos},function(err,res){
-	    			if (err) {
-			            console.log("hxldsb:" + err);
-			        }
-			        else {
-			            console.log("Res:" + res);
-			        }
-	    		});
-	    		req.session.message = '上传成功！';
-	    	}
+		Video.create(_video, function(err){
+			if (err) {
+				console.log(err);
+				return;
+			}
+			console.log("yydsb");
+		});
+		Upload.find(query, (err, uploads) => {
+			if (err) {
+				console.log(err);
+				return;
+			}
+			if(uploads.length === 0){
+				Upload.create({email: user.email, videos : [_video] } ,function(err, res){
+					if(err)
+						console.log(err);
+				} );
+				// console.log("upload failure, invalid user");
+			}
+			else{
+				videos = uploads[0].videos;
+				videos.push(_video);
+				Upload.update(query, {videos: videos},function(err,res){
+					if (err) {
+						console.log("hxldsb:" + err);
+					}
+					else {
+						console.log("Res:" + res);
+					}
+				});
+				req.session.message = '上传成功！';
+			}
 
-	    });
-	    var response = {
-	    	message: "everything fine",
-	    	thumbnail: {
-	    		originalname: thumbnail.originalname,
-	    		path: thumbnail.path,
-	    		mimetype: thumbnail.mimetype,
-	    	},
-	    	video: {
-	    		originalname: video.originalname,
-	    		path: video.path,
-	    		mimetype: video.mimetype,
-	    	}
-	    	// body: body
-	    };
-	    // res.end(JSON.stringify( response ));
-	    res.redirect("../../personal");
+		});
+		var response = {
+			message: "everything fine",
+			thumbnail: {
+				originalname: thumbnail.originalname,
+				path: thumbnail.path,
+				mimetype: thumbnail.mimetype,
+			},
+			video: {
+				originalname: video.originalname,
+				path: video.path,
+				mimetype: video.mimetype,
+			}
+			// body: body
+		};
+		// res.end(JSON.stringify( response ));
+		res.redirect("../../personal");
 	});
 
 });
