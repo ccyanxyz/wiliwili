@@ -70,12 +70,12 @@ router.post('/upload_video', (req, res) => {
 		var _video = new Video({
 			email: user_email,
 			videoId: Date.now(),
-			 // videoUrl: video.path.replace('public/', ""), // macOS
-			videoUrl: video.path.replace('public\\', ""), // Windows
+			  videoUrl: video.path.replace('public/', ""), // macOS
+			//videoUrl: video.path.replace('public\\', ""), // Windows
 			title: body.title,	
 			description: body.description,
-			 // picUrl: thumbnail.path.replace('public/', ""), // macOS
-			picUrl: thumbnail.path.replace('public\\', ""), // Windows
+			  picUrl: thumbnail.path.replace('public/', ""), // macOS
+			//picUrl: thumbnail.path.replace('public\\', ""), // Windows
 			upVote: 0
 		});
 
