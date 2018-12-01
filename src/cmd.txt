@@ -1,5 +1,0 @@
-D:
-cd D:\Xinli\GitHub\houxinli\wiliwili\src
-
-cnpm start
-
