@@ -61,7 +61,7 @@
                         <script type="text/javascript">
                          function show1()
                          {
-                             var value = document.getElementById("div1").style.dispflay;
+                             var value = document.getElementById("div1").style.display;
                              if(value=="none")
                              {
                                  document.getElementById("div1").style.display="block";
@@ -149,7 +149,7 @@
 
             <!-- 新加的已被接悬赏 -->
             <div class="content">
-                <div class="personal-Title">等待审核</div>
+                <div class="personal-Title">待确认悬赏</div>
                 <img src="/images/Line.png" class="personal-line"/>
                 <div class="content">
                 <!-- 这里加个循环 -->
@@ -173,7 +173,7 @@
 
             <!-- 新加的已被接悬赏 -->
             <div class="content">
-                <div class="personal-Title">已完成</div>
+                <div class="personal-Title">已完成悬赏</div>
                 <img src="/images/Line.png" class="personal-line"/>
                 <div class="content">
                 <!-- 这里加个循环 -->
@@ -245,16 +245,12 @@
         var index = $(obj).parent(".yy_add_to_get_index_XD").index();
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
-        // xhr.onreadystatechange=function(){
-        //     top.location.href = '/personal';
-        // }
         var url;
         if($(obj).index()==5)
             url = "/personal/confirm?index=";
         else
             url = "/personal/reject?index="
         url += String(index);
-        alert(url);
         xhr.open("GET", url, true);
         xhr.send();
     }
