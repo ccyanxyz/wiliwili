@@ -1,7 +1,6 @@
 var express = require('express');
-
 var { User, Upload, Reward , Post} = require('../models/db.js');
-// var transfer = require('../utils/token_transfer.js');
+ var transfer = require('../utils/token_transfer.js');
 
 var router = express.Router();
 
