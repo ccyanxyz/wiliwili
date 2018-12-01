@@ -1,6 +1,7 @@
 var express = require('express');
-var { User, Upload, Post} = require('../models/db.js');
- var transfer = require('../utils/token_transfer.js');
+
+var { User, Upload, Reward , Post} = require('../models/db.js');
+// var transfer = require('../utils/token_transfer.js');
 
 var router = express.Router();
 
@@ -49,6 +50,19 @@ router.get('/', function(req, res, next) {
 				}
 				if(upload_ret.length != 0)
 					videos = upload_ret[0]["videos"];
+				waiting_rewards = [];
+				for(var i = 0; i < rewards.length; i++)
+					if(!rewards[0]["finished"])
+						waiting_rewards.push(rewards[0]);
+				req.session.waiting_rewards = waiting_rewards;
+				console.log("GET PAGE");
+				console.log("GET PAGE");
+				console.log("GET PAGE");
+				console.log("GET PAGE");
+				console.log("GET PAGE");
+				console.log("GET PAGE");
+				console.log(req.session);
+
 				res.render('personal', {user:user, rewards: rewards, videos: videos});
 			});
 		});
@@ -123,6 +137,132 @@ router.post('/topup', (req, res) => {
 			res.redirect('./');
 		});
 	})
+});
+
+router.get('/reject', (req, res) => {
+	console.log("########################################");
+	console.log("########################################");
+	console.log("########################################");
+	console.log("########################################");
+	console.log("########################################");
+	console.log("########################################");
+	console.log("########################################");
+	console.log("reject get");
+	console.log("index", req.query.index);
+	console.log(req.session);
+	var reward = req.session.waiting_rewards[req.query.index];
+	console.log("reward", reward);
+
+	Reward.updateOne({_id:reward["_id"]}, {uploaded:false, uploader:"", videoLink:""}, (err)=>{
+		if(err){
+			console.log("Personal.js: Error " + err);
+			return;
+		}
+		Post.find({email:reward["email"]}, (err, ret)=>{
+			if(err){
+				console.log("Personal.js: Error " + err);
+				return;
+			}
+			var rewards = ret[0]["rewardPosts"];
+			for(var i = 0; i < rewards.length; ++i){
+				if(rewards[i]["_id"] == reward["_id"]){
+					rewards[i]["uploaded"] = 0;
+					rewards[i]["uploader"] = "";
+					rewards[i]["videoLink"] = "";
+					break;
+				}
+			}
+			Post.update({email:reward["email"]}, {rewardPosts:rewards}, (err)=>{
+				if(err){
+					console.log("Personal.js: Error " + err);
+					return;
+				}
+				waiting_rewards = [];
+				for(var i = 0; i < rewards.length; i++)
+					if(!rewards[0]["finished"])
+						waiting_rewards.push(rewards[0]);
+				req.session.waiting_rewards = waiting_rewards;
+				res.redirect('./');
+				console.log("****************************************");
+				console.log("****************************************");
+				console.log("****************************************");
+				console.log("****************************************");
+				console.log("****************************************");
+				console.log("****************************************");
+				console.log("****************************************");
+			});
+		});
+	});
+});
+
+router.get('/confirm', (req, res) => {
+	console.log("****************************************");
+	console.log("****************************************");
+	console.log("****************************************");
+	console.log("****************************************");
+	console.log("****************************************");
+	console.log("****************************************");
+	console.log("****************************************");
+	console.log("confirm get");
+	console.log("reward");
+	var reward = req.session.waiting_rewards[req.query.index];
+	console.log(reward);
+
+	User.updateOne({email:reward["uploader"]},{$inc:{points:reward["wili"]}}, (err) => {
+		if(err){
+			console.log("Personal.js: Error " + err);
+			return;
+		}
+		var reward_id = reward._id;
+		console.log("User updated, reward_id:", reward_id);
+		Reward.updateOne({_id: reward_id}, {finished:true}, (err) => {
+			if(err){
+				console.log("Personal.js: Error " + err);
+				return;
+			}
+			console.log("Reward updated");
+			Post.find({email:reward["email"]}, (err, ret) => {
+				if(err){
+					console.log("Personal.js: Error " + err);
+					return;
+				}
+				console.log("Post found");
+				var rewards = ret[0]["rewardPosts"];
+				for(var i = 0; i < rewards.length; ++i){
+					if(rewards[i]["_id"] == reward["_id"]){
+						console.log("I am IN IF!");
+						console.log("I am IN IF!");
+						console.log("I am IN IF!");
+						console.log("I am IN IF!");
+						console.log("I am IN IF!");
+						console.log("I am IN IF!");
+						console.log("I am IN IF!");
+						console.log("I am IN IF!");
+						rewards[i]["finished"] = true;
+					}
+				}
+				Post.updateOne({email:reward["email"]},{rewardPosts:rewards}, (err) => {
+					if(err){
+						console.log("Personal.js: Error " + err);
+						return;
+					}
+					waiting_rewards = [];
+					for(var i = 0; i < rewards.length; i++)
+						if(!rewards[0]["finished"])
+							waiting_rewards.push(rewards[0]);
+					req.session.waiting_rewards = waiting_rewards;
+					res.redirect("./");
+					console.log("****************************************");
+					console.log("****************************************");
+					console.log("****************************************");
+					console.log("****************************************");
+					console.log("****************************************");
+					console.log("****************************************");
+					console.log("****************************************");
+				});
+			});
+		});
+	});	
 });
 
 module.exports = router;

@@ -102,6 +102,8 @@ router.get('/addWili', (req, res) => {
 										console.log(user_post.length);
 										for(var i = 0; i < user_post.length; i++){
 											console.log("大概这边gg了");
+											console.log("reward");
+											console.log(reward);
 											if(user_post[i]["_id"] == reward["_id"]){
 												console.log("大概这边没gg");
 												user_post[i].wili += Number(upAmount);

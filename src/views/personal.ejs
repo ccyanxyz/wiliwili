@@ -61,7 +61,7 @@
                         <script type="text/javascript">
                          function show1()
                          {
-                             var value = document.getElementById("div1").style.display;
+                             var value = document.getElementById("div1").style.dispflay;
                              if(value=="none")
                              {
                                  document.getElementById("div1").style.display="block";
@@ -153,17 +153,19 @@
                 <img src="/images/Line.png" class="personal-line"/>
                 <div class="content">
                 <!-- 这里加个循环 -->
-                <% rewards.forEach(function(reward){
-                    if(reward.finished == false && reward.uploaded == true){%>
-                        <div class="RL-Title"><%=reward.title%></div>
-                        <button class="watchnow"><a href=<%=reward.videoLink%>>WATCH NOW</a></button>
-                        <div class="RL-content"><%=reward.description%></div>
-                        <div class="RL-money">悬赏金额：<%=reward.wili%></div>
-                        <button class="reject_offer">Reject</button>
-                        <button class="confirm_offer">Confirm</button>
-                         <div class="clearfix"></div>
-                    </div>
-                <%}})%>
+                <div class="yy_add_to_get_index_XD">
+                    <% rewards.forEach(function(reward){
+                        if(reward.finished == false && reward.uploaded == true){%>
+                            <div class="RL-Title"><%=reward.title%></div>
+                            <button class="watchnow"><a href=<%=reward.videoLink%>>WATCH NOW</a></button>
+                            <div class="RL-content"><%=reward.description%></div>
+                            <div class="RL-money">悬赏金额：<%=reward.wili%></div>
+                            <button class="reject_offer" onclick="getPostIndex(this);">Reject</button>
+                            <button class="confirm_offer" onclick="getPostIndex(this);">Confirm</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    <%}})%>
+                </div>
                     <div class="card">
                 </div>
                 <div class="clearfix"></div>
@@ -238,5 +240,24 @@
         document.getElementById("video_list2").innerHTML=html;
 
     </script>
+    <script type="text/javascript">
+    function getPostIndex(obj){
+        var index = $(obj).parent(".yy_add_to_get_index_XD").index();
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        // xhr.onreadystatechange=function(){
+        //     top.location.href = '/personal';
+        // }
+        var url;
+        if($(obj).index()==5)
+            url = "/personal/confirm?index=";
+        else
+            url = "/personal/reject?index="
+        url += String(index);
+        alert(url);
+        xhr.open("GET", url, true);
+        xhr.send();
+    }
+</script>
 </body>
 </html>
