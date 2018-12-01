@@ -113,20 +113,36 @@ router.get('/pay', function(req, res, next){
 				console.log("receiver_email: ", receiver_email);
 			}
 			query1 = {email: giver.email}
-			User.update(query1, {$inc:{points:-amount}}, (err,ret) => {
+			User.find(query1, (err, ret)=>{
 				if(err){
-					console.log("play.js: Error line 98" + err);
-					res.status('500').send("play.js: Error line 98" + err);
+					console.log("play.js: Error line 118" + err);
+					res.status('500').send("play.js: Error line 118" + err);
 				}
-			});
-			query2 = {email: receiver_email}
-			User.update(query2, {$inc:{points:+amount}}, (err,ret) => {
-				if(err){
-					console.log("play.js: Error line 105" + err);
-					res.status('500').send("play.js: Error line 105" + err);
+				else if(ret.length == 0){
+					console.log("play.js: Error line 122" + err);
+					res.status('500').send("play.js: Error line 122" + err);	
 				}
+				else if(ret[0].points < amount){
+					// check the balance of the giver account
+					console.log("play.js: Error line 126" + err);
+					res.status('500').send("play.js: Error line 126" + err);	
+					return false;
+				}
+				User.update(query1, {$inc:{points:-amount}}, (err,ret) => {
+					if(err){
+						console.log("play.js: Error line 132" + err);
+						res.status('500').send("play.js: Error line 132" + err);
+					}
+				});
+				query2 = {email: receiver_email}
+				User.update(query2, {$inc:{points:+amount}}, (err,ret) => {
+					if(err){
+						console.log("play.js: Error line 139" + err);
+						res.status('500').send("play.js: Error line 139" + err);
+					}
+				});
+				res.status('200').send();
 			});
-			res.status('200').send();
 		});
 	} else {
 		var user = {};

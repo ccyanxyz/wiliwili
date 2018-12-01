@@ -61,7 +61,7 @@
                         <script type="text/javascript">
                          function show1()
                          {
-                             var value = document.getElementById("div1").style.display;
+                             var value = document.getElementById("div1").style.dispflay;
                              if(value=="none")
                              {
                                  document.getElementById("div1").style.display="block";
@@ -87,7 +87,7 @@
                                 <li onclick="show1()"class="personal-button">TopUp</li>
                                 <div id="div1" style="display:none">
 									<form action="/personal/topup" method="post">
-                                    <input name="amount"id="amount" type="text" placeholder="在此输入金额" />
+                                    <input name="amount"id="amount" type="text" placeholder="input amount" />
                                     <button type="submit" onclick="transfer()">Submit</button>
 									</form>
                                     <script>
@@ -115,8 +115,8 @@
                                 <li onclick="show2()"class="personal-button">Withdraw</li>
                                 <div id="div2" style="display:none">
 									<form action="/personal/withdraw" method="post">
-										<input  name="amount" id="topup_amount" type="text"placeholder="在此输入金额" />
-										<input name="address" id="address"type="text"placeholder="输入您的钱包地址"/>
+										<input  name="amount" id="topup_amount" type="text"placeholder="input amount" />
+										<input name="address" id="address"type="text"placeholder="input your wallet address"/>
 										<button type="submit" formtarget="">Submit</button>
 									</form>
                                 </div>
@@ -129,24 +129,72 @@
                 <div class="clearfix"></div>
             </div>
             <div class="content">
-                <div class="personal-Title"> My Posts</div>
+                <div class="personal-Title">我的悬赏</div>
                 <a href="javascript:;" class="a-upload">
                     <button onclick="{location.href='/post'}">Post</button>
                 </a>
                 <img src="/images/Line.png" class="personal-line"/>
                 <div class="content">
-                    <% rewards.forEach(function(reward){%>
-                    <div class="card">
-                        <div class="RL-Title"><%=reward.title%></div>
-                        <div class="RL-content"><%=reward.description%></div>
-                        <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
-                    </div>
-                    <%})%>
+                    <% rewards.forEach(function(reward){
+                        if(reward.uploaded == false){%>
+                            <div class="card">
+                                <div class="RL-Title"><%=reward.title%></div>
+                                <div class="RL-content"><%=reward.description%></div>
+                                <div class="RL-money">悬赏金额：<%=reward.wili%> wili</div>
+                            </div>
+                    <%}})%>
                 </div>
                 <div class="clearfix"></div>
             </div>
+
+            <!-- 新加的已被接悬赏 -->
             <div class="content">
-                <div class="personal-Title">My Videos</div>
+                <div class="personal-Title">等待审核</div>
+                <img src="/images/Line.png" class="personal-line"/>
+                <div class="content">
+                <!-- 这里加个循环 -->
+                <div class="yy_add_to_get_index_XD">
+                    <% rewards.forEach(function(reward){
+                        if(reward.finished == false && reward.uploaded == true){%>
+                            <div class="RL-Title"><%=reward.title%></div>
+                            <button class="watchnow"><a href=<%=reward.videoLink%>>WATCH NOW</a></button>
+                            <div class="RL-content"><%=reward.description%></div>
+                            <div class="RL-money">悬赏金额：<%=reward.wili%></div>
+                            <button class="reject_offer" onclick="getPostIndex(this);">Reject</button>
+                            <button class="confirm_offer" onclick="getPostIndex(this);">Confirm</button>
+                            <div class="clearfix"></div>
+                        </div>
+                    <%}})%>
+                </div>
+                    <div class="card">
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+            <!-- 新加的已被接悬赏 -->
+            <div class="content">
+                <div class="personal-Title">已完成</div>
+                <img src="/images/Line.png" class="personal-line"/>
+                <div class="content">
+                <!-- 这里加个循环 -->
+                <% rewards.forEach(function(reward){
+                    if(reward.finished == true){%>
+                        <div class="RL-Title"><%=reward.title%></div>
+                        <button class="watchnow"><a href=<%=reward.videoLink%>>WATCH NOW</a></button>
+                        <div class="RL-content"><%=reward.description%></div>
+                        <div class="RL-money">悬赏金额：<%=reward.wili%></div>
+                         <div class="clearfix"></div>
+                    </div>
+                <%}})%>
+                    <div class="card">
+
+                <!-- 这里加个循环 -->
+                </div>
+                <div class="clearfix"></div>
+            </div> 
+
+            <div class="content">
+                <div class="personal-Title">我的视频</div>
                <a href="javascript:;" class="a-upload">
                    <button onclick="{location.href='/upload'}">Upload</button>
                </a>
@@ -158,7 +206,7 @@
                          <% for(var i = 0; i < videos.length; i++) {%>
                          <div class="grid_2 col_1">
                          <a href="play?id=<%=videos[i]._id%>">
-                         <img src="<%=videos[i].picUrl%>" class="img-responsive" alt=""/>
+                         <img src="<%=videos[i].picUrl%>" class="img-responsive2" alt=""/>
                          <div class="caption1">
                          <ul class="list_3">
                          <li><i class="icon5">
@@ -192,5 +240,24 @@
         document.getElementById("video_list2").innerHTML=html;
 
     </script>
+    <script type="text/javascript">
+    function getPostIndex(obj){
+        var index = $(obj).parent(".yy_add_to_get_index_XD").index();
+        var xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+        // xhr.onreadystatechange=function(){
+        //     top.location.href = '/personal';
+        // }
+        var url;
+        if($(obj).index()==5)
+            url = "/personal/confirm?index=";
+        else
+            url = "/personal/reject?index="
+        url += String(index);
+        alert(url);
+        xhr.open("GET", url, true);
+        xhr.send();
+    }
+</script>
 </body>
 </html>

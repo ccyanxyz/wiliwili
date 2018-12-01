@@ -64,6 +64,23 @@
     margin-top: 0.5cm;
 }
 
+.upload_button input[type="submit"] {
+    color: #f9fbff;
+    border:1px solid #6103d2;
+    border-radius: 4px;
+    background-color: #6103d2;
+    width: 20%;
+    font-size: 150%;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    margin-top: 0.5cm;
+}
+.upload_button input[type="submit"]:hover{
+    background:#000;
+}
+
 .reward-button button:hover{
     color: whitesmoke;
     background-color: #40176b;
