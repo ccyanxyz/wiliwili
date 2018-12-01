@@ -41,7 +41,7 @@
             <div class="content">
                 <div class="personal-Title">Reward List</div>
                 <img src="..//images/Line.png" class="personal-line"/>
-                <div class = "yy add to get index XD">
+                <div class = "yy_add_to_get_index_XD">
                      <% rewards.forEach(function(reward){%>
                     <div class="card">
 
@@ -67,7 +67,7 @@
 <script type="text/javascript" src="..//js/ejs_fulljslint.js"></script>
 <script type="text/javascript">
     function getIndex(obj){
-        var index = $(obj).parent(".card").index();
+        var index = $(obj).parent(".card").index()/2;
         var up = $(obj).parent(".card").find("input").val();
         var xhr = new XMLHttpRequest();
         xhr.withCredentials = true;
