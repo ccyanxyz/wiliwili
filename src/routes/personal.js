@@ -139,16 +139,6 @@ router.post('/topup', (req, res) => {
 });
 
 router.get('/reject', (req, res) => {
-	console.log("########################################");
-	console.log("########################################");
-	console.log("########################################");
-	console.log("########################################");
-	console.log("########################################");
-	console.log("########################################");
-	console.log("########################################");
-	console.log("reject get");
-	console.log("index", req.query.index);
-	console.log(req.session);
 	var reward = req.session.waiting_rewards[req.query.index];
 	console.log("reward", reward);
 
@@ -182,28 +172,12 @@ router.get('/reject', (req, res) => {
 						waiting_rewards.push(rewards[0]);
 				req.session.waiting_rewards = waiting_rewards;
 				res.redirect('./');
-				console.log("****************************************");
-				console.log("****************************************");
-				console.log("****************************************");
-				console.log("****************************************");
-				console.log("****************************************");
-				console.log("****************************************");
-				console.log("****************************************");
 			});
 		});
 	});
 });
 
 router.get('/confirm', (req, res) => {
-	console.log("****************************************");
-	console.log("****************************************");
-	console.log("****************************************");
-	console.log("****************************************");
-	console.log("****************************************");
-	console.log("****************************************");
-	console.log("****************************************");
-	console.log("confirm get");
-	console.log("reward");
 	var reward = req.session.waiting_rewards[req.query.index];
 	console.log(reward);
 
@@ -229,14 +203,6 @@ router.get('/confirm', (req, res) => {
 				var rewards = ret[0]["rewardPosts"];
 				for(var i = 0; i < rewards.length; ++i){
 					if(rewards[i]["_id"] == reward["_id"]){
-						console.log("I am IN IF!");
-						console.log("I am IN IF!");
-						console.log("I am IN IF!");
-						console.log("I am IN IF!");
-						console.log("I am IN IF!");
-						console.log("I am IN IF!");
-						console.log("I am IN IF!");
-						console.log("I am IN IF!");
 						rewards[i]["finished"] = true;
 					}
 				}
@@ -251,13 +217,6 @@ router.get('/confirm', (req, res) => {
 							waiting_rewards.push(rewards[0]);
 					req.session.waiting_rewards = waiting_rewards;
 					res.redirect("./");
-					console.log("****************************************");
-					console.log("****************************************");
-					console.log("****************************************");
-					console.log("****************************************");
-					console.log("****************************************");
-					console.log("****************************************");
-					console.log("****************************************");
 				});
 			});
 		});
