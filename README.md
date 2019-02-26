@@ -7,7 +7,7 @@ If you want to see how it looks:
 1.Clone the project：
 
 ```shell
-git clone https://github.com/C790266922/wiliwili.git
+git clone https://github.com/ccyanxyz/wiliwili.git
 ```
 
 2.Install dependencies：
