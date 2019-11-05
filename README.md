@@ -1,7 +1,6 @@
 # Wiliwili
 
-A simple UGC video site like bilibili with ERC20 token incentive. Note that this is just a semi-finished course project and there are still a lot of problems in the incentive mechanism design and code implementation, so don't be serious :)
-
+A simple UGC video site like bilibili with ERC20 token incentive. Note that this is just a semi-finished course project and there are still a lot of problems in the incentive mechanism design and code implementation.
 If you want to see how it looks:
 
 1.Clone the project：
